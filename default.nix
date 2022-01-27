@@ -13,7 +13,11 @@
 #   };
 # }
 
-shellHook =
-  ''
-    echo hello
-  '';
+{
+  install = {
+    shellHook =
+      ''
+        echo hello
+      '';
+  };
+}
