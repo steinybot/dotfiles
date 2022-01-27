@@ -29,5 +29,5 @@ in
   home.file.".config".source = "${dotFilesRepo}/.config";
 
   # Link .nixpkgs directory.
-  home.file.".nikpkgs".source = "${dotFilesRepo}/.nikpkgs";
+  home.file.".nixpkgs".source = "${dotFilesRepo}/.nixpkgs";
 }
