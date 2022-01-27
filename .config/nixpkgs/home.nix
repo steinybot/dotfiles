@@ -26,8 +26,8 @@ in
   programs.home-manager.enable = true;
 
   # Link .config directory.
-  home.file.".config".source = ${dotFilesRepo}/.config;
+  home.file.".config".source = "${dotFilesRepo}/.config";
 
   # Link .nixpkgs directory.
-  home.file.".nikpkgs".source = ${dotFilesRepo}/.nikpkgs;
+  home.file.".nikpkgs".source = "${dotFilesRepo}/.nikpkgs";
 }
