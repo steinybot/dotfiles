@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  dotFilesRepo = fetchGit {
+    url = "https://github.com/steinybot/dotfiles.git";
+    ref = "main";
+  };
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -20,8 +26,8 @@
   programs.home-manager.enable = true;
 
   # Link .config directory.
-  home.file.".config".source = ./.config;
+  home.file.".config".source = ${dotFilesRepo}/.config;
 
   # Link .nixpkgs directory.
-  home.file.".nikpkgs".source = ./.nikpkgs;
+  home.file.".nikpkgs".source = ${dotFilesRepo}/.nikpkgs;
 }
