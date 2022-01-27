@@ -1,10 +1,15 @@
 { config, pkgs, ... }:
 
 let
+  # The path to this repository once it has been checked out.
   dotFilesRepo = fetchGit {
     url = "https://github.com/steinybot/dotfiles.git";
     ref = "main";
   };
+
+  # Link everything in home.
+  homeFileNames = readDir dotFilesRepo;
+  homeFiles = mapAttrs (name: { source = "${dotFilesRepo}/${name}"; }) homeFileNames;
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -25,9 +30,6 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Link .config directory.
-  home.file.".config".source = "${dotFilesRepo}/.config";
-
-  # Link .nixpkgs directory.
-  home.file.".nixpkgs".source = "${dotFilesRepo}/.nixpkgs";
+  # Link everything.
+  home.file = homeFiles;
 }

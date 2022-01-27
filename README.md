@@ -41,5 +41,5 @@ home-manager switch
 ```
 
 [bootstrap]: https://github.com/steinybot/bootstrap
-[home.nix]: .config/nixpkgs/home.nix
+[home.nix]: home/.config/nixpkgs/home.nix
 [home manager]: https://github.com/nix-community/home-manager
