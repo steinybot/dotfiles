@@ -8,8 +8,9 @@ let
   };
 
   # Link everything in home.
-  homeFileNames = readDir dotFilesRepo;
-  homeFiles = mapAttrs (name: { source = "${dotFilesRepo}/${name}"; }) homeFileNames;
+  homeFilesDirectory = "${dotFilesRepo}/home";
+  homeFileNames = readDir homeFilesDirectory;
+  homeFiles = mapAttrs (name: { source = "${homeFilesDirectory}/${name}"; }) homeFileNames;
 in
 {
   # Home Manager needs a bit of information about you and the
