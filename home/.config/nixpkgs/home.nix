@@ -10,7 +10,7 @@ let
   # Link everything in home.
   homeFilesDirectory = "${dotFilesRepo}/home";
   homeFileNames = builtins.readDir homeFilesDirectory;
-  homeFiles = mapAttrs (name: { source = "${homeFilesDirectory}/${name}"; }) homeFileNames;
+  homeFiles = builtins.mapAttrs (name: { source = "${homeFilesDirectory}/${name}"; }) homeFileNames;
 in
 {
   # Home Manager needs a bit of information about you and the
