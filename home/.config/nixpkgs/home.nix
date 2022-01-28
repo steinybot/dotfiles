@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, activateChanges ? true, ... }:
 
 let
   # The path to this repository once it has been checked out.
@@ -12,6 +12,12 @@ let
   homeFileNames = builtins.readDir homeFilesDirectory;
   homeFiles = builtins.mapAttrs (name: value: {
       source = "${homeFilesDirectory}/${name}";
+      # Since this may update itself we might need to run again.
+      # TODO: Is there anyway to do this only if home.nix changes?
+      #  I tried moving this and declaring it as it's own file but some bizarre reason
+      #  it would always say that the attribute was already defined.
+      ${ if name == ".config" && activateChanges then "onChange" else null } =
+        "home-manager --option tarball-ttl 0 --arg activateChanges false switch";
       # This has to be recursive otherwise we get an error saying:
       # Error installing file '...' outside $HOME
       # When using something like programs.git which will try and write
@@ -19,10 +25,6 @@ let
       # of $HOME.
       recursive = true;
     }) homeFileNames;
-
-  # Home Manager configuration has to be done separately from .config
-  # because we need to run onChange and avoid an infinite loop.
-  homeManagerDirectory = "${dotFilesRepo}/home-manager";
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -32,13 +34,6 @@ in
 
   # Link everything.
   home.file = homeFiles;
-
-  # Add onChange to home.nix since this may update itself we might need to run again.
-  home.file."home.nix" = {
-    source = "${homeManagerDirectory}/home.nix";
-    target = ".config/nixpkgs/home.nix";
-    #onChange = "home-manager --option tarball-ttl 0 switch";
-  };
 
   # Install packages.
   home.packages = with pkgs; [
