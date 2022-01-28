@@ -10,7 +10,7 @@ let
   # Link everything in home.
   homeFilesDirectory = "${dotFilesRepo}/home";
   homeFileNames = builtins.readDir homeFilesDirectory;
-  wtf = builtins.trace args true;
+  wtf = builtins.trace "hello" true;
   homeFiles = builtins.mapAttrs (name: value: {
       source = "${homeFilesDirectory}/${name}";
       # Since this may update itself we might need to run again.
