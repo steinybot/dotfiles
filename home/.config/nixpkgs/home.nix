@@ -12,15 +12,12 @@ let
   homeFileNames = builtins.readDir homeFilesDirectory;
   homeFiles = builtins.mapAttrs (name: value: {
       source = "${homeFilesDirectory}/${name}";
-      # Since this may update itself we might need to run again.
-      # TODO: Is there anyway to do this only if home.nix changes?
-      ${ if name == ".config" then "onChange" else null } = "home-manager --option tarball-ttl 0 switch";
       # This has to be recursive otherwise we get an error saying:
       # Error installing file '...' outside $HOME
       # When using something like programs.git which will try and write
       # to .config but if that directory is a symlink then it is outside
       # of $HOME.
-      ${ if name == ".config" then "recursive" else null } = true;
+      recursive = true;
     }) homeFileNames;
 in
 {
@@ -31,6 +28,12 @@ in
 
   # Link everything.
   home.file = homeFiles;
+
+  # Add onChange to home.nix since this may update itself we might need to run again.
+  home.file.".config/nixpkgs/home.nix" = {
+    source = "${homeFilesDirectory}/.config/nixpkgs/home.nix";
+    onChange = "home-manager --option tarball-ttl 0 switch";
+  };
 
   # Install packages.
   home.packages = with pkgs; [
