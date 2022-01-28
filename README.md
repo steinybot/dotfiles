@@ -34,11 +34,7 @@ home-manager switch
 
 That will build and activate your current version of the configuration which may in turn update the configuration.
 
-If the configuration has been updated then you will need to activate the new configuration:
-
-```sh
-home-manager switch
-```
+If `home/.config` changes then `home-manager` will be rerun to activate the new configuration.
 
 [bootstrap]: https://github.com/steinybot/bootstrap
 [home.nix]: home/.config/nixpkgs/home.nix

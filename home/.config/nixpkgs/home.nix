@@ -10,7 +10,12 @@ let
   # Link everything in home.
   homeFilesDirectory = "${dotFilesRepo}/home";
   homeFileNames = builtins.readDir homeFilesDirectory;
-  homeFiles = builtins.mapAttrs (name: value: { source = "${homeFilesDirectory}/${name}"; }) homeFileNames;
+  homeFiles = builtins.mapAttrs (name: value: {
+      source = "${homeFilesDirectory}/${name}";
+      # Since this may update itself we might need to run again.
+      # TODO: Is there anyway to do this only if home.nix changes?
+      ${ if name == ".config" then "onChange" else null } = "home-manager switch";
+    }) homeFileNames;
 in
 {
   # Home Manager needs a bit of information about you and the
