@@ -9,7 +9,7 @@ let
 
   # Link everything in home.
   homeFilesDirectory = "${dotFilesRepo}/home";
-  homeFileNames = readDir homeFilesDirectory;
+  homeFileNames = builtins.readDir homeFilesDirectory;
   homeFiles = mapAttrs (name: { source = "${homeFilesDirectory}/${name}"; }) homeFileNames;
 in
 {
