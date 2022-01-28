@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+args@{ config, pkgs, ... }:
 
 let
   # The path to this repository once it has been checked out.
@@ -10,7 +10,7 @@ let
   # Link everything in home.
   homeFilesDirectory = "${dotFilesRepo}/home";
   homeFileNames = builtins.readDir homeFilesDirectory;
-  wtf = activateChanges ? true;
+  wtf = builtins.trace args true;
   homeFiles = builtins.mapAttrs (name: value: {
       source = "${homeFilesDirectory}/${name}";
       # Since this may update itself we might need to run again.
