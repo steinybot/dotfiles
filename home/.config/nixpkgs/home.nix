@@ -38,6 +38,7 @@ in
 
   # Install packages.
   home.packages = with pkgs; [
+    git
   ];
 
   # This value determines the Home Manager release that your
