@@ -10,13 +10,14 @@ let
   # Link everything in home.
   homeFilesDirectory = "${dotFilesRepo}/home";
   homeFileNames = builtins.readDir homeFilesDirectory;
+  wtf = activateChanges;
   homeFiles = builtins.mapAttrs (name: value: {
       source = "${homeFilesDirectory}/${name}";
       # Since this may update itself we might need to run again.
       # TODO: Is there anyway to do this only if home.nix changes?
       #  I tried moving this and declaring it as it's own file but some bizarre reason
       #  it would always say that the attribute was already defined.
-      ${ if name == ".config" && activateChanges then "onChange" else null } =
+      ${ if name == ".config" && wtf then "onChange" else null } =
         "home-manager --option tarball-ttl 0 --arg activateChanges false switch";
       # This has to be recursive otherwise we get an error saying:
       # Error installing file '...' outside $HOME
