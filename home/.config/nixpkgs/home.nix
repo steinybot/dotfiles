@@ -14,7 +14,7 @@ let
       source = "${homeFilesDirectory}/${name}";
       # Since this may update itself we might need to run again.
       # TODO: Is there anyway to do this only if home.nix changes?
-      ${ if name == ".config" then "onChange" else null } = "home-manager switch";
+      ${ if name == ".config" then "onChange" else null } = "home-manager --option tarball-ttl 0 switch";
     }) homeFileNames;
 in
 {
