@@ -19,6 +19,10 @@ let
       # of $HOME.
       recursive = true;
     }) homeFileNames;
+
+  # Home Manager configuration has to be done separately from .config
+  # because we need to run onChange and avoid an infinite loop.
+  homeManagerDirectory = "${dotFilesRepo}/home-manager";
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -30,8 +34,10 @@ in
   home.file = homeFiles;
 
   # Add onChange to home.nix since this may update itself we might need to run again.
-  home.file.".config/nixpkgs/home.nix".source = "${homeFilesDirectory}/.config/nixpkgs/home.nix";
-  home.file.".config/nixpkgs/home.nix".onChange = "home-manager --option tarball-ttl 0 switch";
+  home.file.".config/nixpkgs/home.nix" = {
+    source = "${homeManagerDirectory}/home.nix";
+    onChange = "home-manager --option tarball-ttl 0 switch";
+  };
 
   # Install packages.
   home.packages = with pkgs; [
