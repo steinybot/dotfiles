@@ -37,7 +37,7 @@ in
   home.file."home.nix" = {
     source = "${homeManagerDirectory}/home.nix";
     target = ".config/nixpkgs/home.nix";
-    onChange = "home-manager --option tarball-ttl 0 switch";
+    #onChange = "home-manager --option tarball-ttl 0 switch";
   };
 
   # Install packages.
