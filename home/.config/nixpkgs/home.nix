@@ -13,12 +13,6 @@ let
   wtf = builtins.trace config false;
   homeFiles = builtins.mapAttrs (name: value: {
       source = "${homeFilesDirectory}/${name}";
-      # Since this may update itself we might need to run again.
-      # TODO: Is there anyway to do this only if home.nix changes?
-      #  I tried moving this and declaring it as it's own file but some bizarre reason
-      #  it would always say that the attribute was already defined.
-      ${ if name == ".config" && wtf then "onChange" else null } =
-        "home-manager --option tarball-ttl 0 --arg activateChanges false switch";
       # This has to be recursive otherwise we get an error saying:
       # Error installing file '...' outside $HOME
       # When using something like programs.git which will try and write
@@ -34,7 +28,14 @@ in
   home.homeDirectory = "/Users/jason";
 
   # Link everything.
-  home.file = homeFiles;
+  home.file = homeFiles // {
+    # Add this independently so that we can add an onChange just to this one
+    # file since this may update itself we might need to run again.
+    ".config/nixpkgs/home.nix" = {
+      source = "${homeFilesDirectory}/.config/nixpkgs/home.nix";
+      onChange = "home-manager --option tarball-ttl 0 --arg activateChanges false switch";
+    };
+  };
 
   # Install packages.
   home.packages = with pkgs; [
