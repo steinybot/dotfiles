@@ -30,10 +30,8 @@ in
   home.file = homeFiles;
 
   # Add onChange to home.nix since this may update itself we might need to run again.
-  home.file.".config/nixpkgs/home.nix" = {
-    source = "${homeFilesDirectory}/.config/nixpkgs/home.nix";
-    onChange = "home-manager --option tarball-ttl 0 switch";
-  };
+  home.file.".config/nixpkgs/home.nix".source = "${homeFilesDirectory}/.config/nixpkgs/home.nix";
+  home.file.".config/nixpkgs/home.nix".onChange = "home-manager --option tarball-ttl 0 switch";
 
   # Install packages.
   home.packages = with pkgs; [
