@@ -23,6 +23,13 @@ in
   home.username = "jason";
   home.homeDirectory = "/Users/jason";
 
+  # Link everything.
+  home.file = homeFiles;
+
+  # Install packages.
+  home.packages = with pkgs; [
+  ];
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -36,6 +43,30 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Link everything.
-  home.file = homeFiles;
+  # Keep git even if you do not use it so that fetchGit works even
+  # if XCode is not installed.
+  programs.git = {
+    enable = true;
+    delta = {
+      enable = true;
+    };
+    includes = [
+      {
+        content = {
+          user.email = "jasonpickensnz@gmail.com";
+        };
+      }
+      {
+        condition = "gitdir:~/src/goodcover/";
+        content = {
+          user.email = "jason@goodcover.com";
+        };
+      }
+    ];
+    signing = {
+      key = "C4A8C75C7876F1B5";
+      signByDefault = true;
+    };
+    userName = "Jason Pickens";
+  };
 }
