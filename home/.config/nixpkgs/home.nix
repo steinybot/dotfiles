@@ -1,4 +1,4 @@
-args@{ config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   # The path to this repository once it has been checked out.
@@ -10,7 +10,6 @@ let
   # Link everything in home.
   homeFilesDirectory = "${dotFilesRepo}/home";
   homeFileNames = builtins.readDir homeFilesDirectory;
-  wtf = builtins.trace config false;
   homeFiles = builtins.mapAttrs (name: value: {
       source = "${homeFilesDirectory}/${name}";
       # This has to be recursive otherwise we get an error saying:
@@ -33,7 +32,7 @@ in
     # file since this may update itself we might need to run again.
     ".config/nixpkgs/home.nix" = {
       source = "${homeFilesDirectory}/.config/nixpkgs/home.nix";
-      onChange = "home-manager --option tarball-ttl 0 --arg activateChanges false switch";
+      onChange = "home-manager --option tarball-ttl 0 switch";
     };
   };
 
