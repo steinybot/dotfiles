@@ -52,13 +52,13 @@ in
     };
     includes = [
       {
-        content = {
+        contents = {
           user.email = "jasonpickensnz@gmail.com";
         };
       }
       {
         condition = "gitdir:~/src/goodcover/";
-        content = {
+        contents = {
           user.email = "jason@goodcover.com";
         };
       }
