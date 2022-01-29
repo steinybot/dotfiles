@@ -39,6 +39,7 @@ in
   # Install packages.
   home.packages = with pkgs; [
     git
+    steam
   ];
 
   # This value determines the Home Manager release that your
