@@ -37,7 +37,7 @@ in
     # Same with this.
     ".nixpkgs/darwin-configuration.nix" = {
       source = "${homeFilesDirectory}/.nixpkgs/darwin-configuration.nix";
-      onChange = "darwin-rebuild";
+      onChange = "darwin-rebuild switch";
     };
   };
 
