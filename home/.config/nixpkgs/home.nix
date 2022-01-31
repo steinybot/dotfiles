@@ -43,7 +43,8 @@ in
 
   # Install packages.
   home.packages = with pkgs; [
-    steam
+    # FIXME: This doesn't work as glibc-2.33-59 is not supported on aarch64-darwin.
+    #steam
   ];
 
   # This value determines the Home Manager release that your
