@@ -34,11 +34,15 @@ in
       source = "${homeFilesDirectory}/.config/nixpkgs/home.nix";
       onChange = "home-manager --option tarball-ttl 0 switch";
     };
+    # Same with this.
+    ".nixpkgs/darwin-configuration.nix" = {
+      source = "${homeFilesDirectory}/.nixpkgs/darwin-configuration.nix";
+      onChange = "darwin-rebuild";
+    };
   };
 
   # Install packages.
   home.packages = with pkgs; [
-    git
     steam
   ];
 
