@@ -43,7 +43,8 @@ in
 
   # Install packages.
   home.packages = with pkgs; [
-    jetbrains.idea-ultimate
+    # FIXME: Not supported on aarch64-darwin.
+    #jetbrains.idea-ultimate
     sbt
     scala
     # FIXME: This doesn't work as glibc-2.33-59 is not supported on aarch64-darwin.
