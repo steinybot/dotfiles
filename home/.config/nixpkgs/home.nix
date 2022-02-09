@@ -71,7 +71,7 @@ in
   home.file = managedHomeFiles // unmanagedHomeFiles;
 
   # Install packages.
-  home.packages = packages ++ steinybotPackages;
+  home.packages = packages ++ customPackages;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
