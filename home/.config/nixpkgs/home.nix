@@ -53,7 +53,7 @@ let
   ];
 
   # The first time we run this the channel won't exist yet.
-  tryImportPkgsSteinybot = builtins.tryEval (import <change-me> {});
+  tryImportPkgsSteinybot = builtins.tryEval (import <steinybot> {});
 
   steinybotPackages = if tryImportPkgsSteinybot.success then (
     with tryImportPkgsSteinybot.value; [
