@@ -7,10 +7,33 @@ let
     ref = "main";
   };
 
-  # Link everything in home.
   homeFilesDirectory = "${dotFilesRepo}/home";
-  homeFileNames = builtins.readDir homeFilesDirectory;
-  homeFiles = builtins.mapAttrs (name: value: {
+
+  # Add these manually so that we can specify custom onChange etc.
+  managedHomeFiles = {
+    # This may update itself so we might need to run again.
+    ".config/nixpkgs/home.nix" = {
+      source = "${homeFilesDirectory}/.config/nixpkgs/home.nix";
+      onChange = "home-manager --option tarball-ttl 0 switch";
+    };
+
+    # Run rebuild when the configuration changes.
+    ".nixpkgs/darwin-configuration.nix" = {
+      source = "${homeFilesDirectory}/.nixpkgs/darwin-configuration.nix";
+      onChange = "darwin-rebuild switch";
+    };
+
+    # Update the channels when they change.
+    ".nix-channels" = {
+      source = "${homeFilesDirectory}/.nix-channels";
+      onChange = "nix-channel --update";
+    };
+  };
+  managedHomeFileNames = builtins.attrNames managedHomeFiles;
+
+  # Add all the rest of the files in home automatically.
+  unmanagedHomeFileNames = builtins.removeAttrs (builtins.readDir homeFilesDirectory) managedHomeFileNames;
+  unmanagedHomeFiles = builtins.mapAttrs (name: value: {
       source = "${homeFilesDirectory}/${name}";
       # This has to be recursive otherwise we get an error saying:
       # Error installing file '...' outside $HOME
@@ -18,7 +41,7 @@ let
       # to .config but if that directory is a symlink then it is outside
       # of $HOME.
       recursive = true;
-    }) homeFileNames;
+    }) unmanagedHomeFileNames;
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -26,20 +49,8 @@ in
   home.username = "jason";
   home.homeDirectory = "/Users/jason";
 
-  # Link everything.
-  home.file = homeFiles // {
-    # Add this independently so that we can add an onChange just to this one
-    # file since this may update itself we might need to run again.
-    ".config/nixpkgs/home.nix" = {
-      source = "${homeFilesDirectory}/.config/nixpkgs/home.nix";
-      onChange = "home-manager --option tarball-ttl 0 switch";
-    };
-    # Same with this.
-    ".nixpkgs/darwin-configuration.nix" = {
-      source = "${homeFilesDirectory}/.nixpkgs/darwin-configuration.nix";
-      onChange = "darwin-rebuild switch";
-    };
-  };
+  # Link home files.
+  home.file = managedHomeFiles // unmanagedHomeFiles;
 
   # Install packages.
   home.packages = with pkgs; [
