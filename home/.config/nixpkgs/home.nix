@@ -52,16 +52,12 @@ let
     #steam
   ];
 
-  # The first time we run this the channel won't exist yet.
-  tryImportPkgsSteinybot = builtins.tryEval (import <steinybot> {});
-
-#  steinybotPackages = if tryImportPkgsSteinybot.success then (
-#    with tryImportPkgsSteinybot.value; [
-#      jetbrains.idea-ultimate
-#    ]
-#  ) else [];
-  pkgsSteinybot = import <steinybot> {};
-  steinybotPackages = with pkgsSteinybot; [
+  customPkgsRepo = fetchGit {
+    url = "https://github.com/steinybot/nixpkgs.git";
+    ref = "fix/jetbrains-apple";
+  };
+  customPkgs = import customPkgsRepo {};
+  customPackages = with customPkgs; [
     jetbrains.idea-ultimate
   ];
 in
