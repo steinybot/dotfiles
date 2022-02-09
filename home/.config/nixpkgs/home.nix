@@ -6,7 +6,6 @@ let
     url = "https://github.com/steinybot/dotfiles.git";
     ref = "main";
   };
-
   homeFilesDirectory = "${dotFilesRepo}/home";
 
   # Add these manually so that we can specify custom onChange etc.
@@ -24,6 +23,7 @@ let
     };
 
     # Update the channels when they change.
+    # FIXME: This onChange needs to run first.
     ".nix-channels" = {
       source = "${homeFilesDirectory}/.nix-channels";
       onChange = "nix-channel --update";
@@ -42,6 +42,24 @@ let
       # of $HOME.
       recursive = true;
     }) unmanagedHomeFileNames;
+
+  packages = with pkgs; [
+    # FIXME: Not supported on aarch64-darwin.
+    #jetbrains.idea-ultimate
+    sbt
+    scala
+    # FIXME: This doesn't work as glibc-2.33-59 is not supported on aarch64-darwin.
+    #steam
+  ];
+
+  # The first time we run this the channel won't exist yet.
+  tryImportPkgsSteinybot = builtins.tryEval (import <change-me> {});
+
+  steinybotPackages = if tryImportPkgsSteinybot.success then (
+    with tryImportPkgsSteinybot.value; [
+      jetbrains.idea-ultimate
+    ]
+  ) else [];
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -53,14 +71,7 @@ in
   home.file = managedHomeFiles // unmanagedHomeFiles;
 
   # Install packages.
-  home.packages = with pkgs; [
-    # FIXME: Not supported on aarch64-darwin.
-    #jetbrains.idea-ultimate
-    sbt
-    scala
-    # FIXME: This doesn't work as glibc-2.33-59 is not supported on aarch64-darwin.
-    #steam
-  ];
+  home.packages = packages ++ steinybotPackages;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
