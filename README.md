@@ -12,11 +12,7 @@ You need to sign in to the App Store:
 open -a "App Store"
 ```
 
-And install Xcode:
-
-```shell
-nix-shell -p mas 'mas lucky Xcode'
-```
+Then install `Xcode` manually.
 
 ## Setup
 
