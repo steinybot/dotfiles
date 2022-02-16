@@ -4,6 +4,20 @@ My dotfiles.
 
 This is all managed via [home-manager] and the [home.nix] configuration. `home.nix` will checkout this repository and link all the files to their correct places.
 
+## Prerequisites
+
+You need to sign in to the App Store:
+
+```shell
+open -a "App Store"
+```
+
+And install Xcode:
+
+```shell
+nix-shell -p mas 'mas lucky Xcode'
+```
+
 ## Setup
 
 You need to bootstrap `home-manager` so that it can do the rest. This only needs to be done once, after that see the [update](#update) instructions.
