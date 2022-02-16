@@ -56,7 +56,7 @@ let
 
   customPkgsRepo = fetchGit {
     url = "https://github.com/steinybot/nixpkgs.git";
-    ref = "fix/jetbrains-apple";
+    ref = "dev";
   };
   customPkgs = import customPkgsRepo {};
   customPackages = with customPkgs; [
