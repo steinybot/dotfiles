@@ -45,6 +45,7 @@ let
 
   packages = with pkgs; [
     # FIXME: Not supported on aarch64-darwin.
+    # https://github.com/NixOS/nixpkgs/pull/160115
     #jetbrains.idea-ultimate
     sbt
     scala
