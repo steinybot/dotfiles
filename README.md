@@ -14,6 +14,12 @@ open -a "App Store"
 
 Then install `Xcode` manually.
 
+Lastly, agree to the Xcode license agreements:
+
+```shell
+sudo xcodebuild -license
+```
+
 ## Setup
 
 You need to bootstrap `home-manager` so that it can do the rest. This only needs to be done once, after that see the [update](#update) instructions.
