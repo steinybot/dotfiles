@@ -3,6 +3,7 @@
 let
   packages = with pkgs; [
     git
+    mas
     vim
   ];
 
@@ -12,7 +13,7 @@ let
   };
   customPkgs = import customPkgsRepo {};
   customPackages = with customPkgs; [
-    mas
+#    mas
   ];
 in
 {
