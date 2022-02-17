@@ -3,6 +3,7 @@
 let
   packages = with pkgs; [
     git
+    tree
     vim
   ];
 
