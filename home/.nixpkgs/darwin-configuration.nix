@@ -3,6 +3,11 @@
 let
   packages = with pkgs; [
     git
+    # FIXME: Not supported on aarch64-darwin.
+    #iterm2
+    # FIXME: Not supported on aarch64-darwin.
+    # https://github.com/NixOS/nixpkgs/pull/160115
+    #jetbrains.idea-ultimate
     # FIXME: Update to latest version.
     # https://github.com/NixOS/nixpkgs/pull/160382
     #mas
@@ -16,6 +21,10 @@ let
   };
   customPkgs = import customPkgsRepo {};
   customPackages = with customPkgs; [
+    # GUI applications have to be installed with Nix Darwin and not Home Manager otherwise they
+    # do not work with Spotlight etc. See https://github.com/nix-community/home-manager/issues/1341.
+    iterm2
+    jetbrains.idea-ultimate
     mas
   ];
 in

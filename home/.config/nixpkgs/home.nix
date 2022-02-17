@@ -44,11 +44,6 @@ let
     }) unmanagedHomeFileNames;
 
   packages = with pkgs; [
-    # FIXME: Not supported on aarch64-darwin.
-    #iterm2
-    # FIXME: Not supported on aarch64-darwin.
-    # https://github.com/NixOS/nixpkgs/pull/160115
-    #jetbrains.idea-ultimate
     sbt
     scala
     # FIXME: This doesn't work as glibc-2.33-59 is not supported on aarch64-darwin.
@@ -61,8 +56,6 @@ let
   };
   customPkgs = import customPkgsRepo {};
   customPackages = with customPkgs; [
-    iterm2
-    jetbrains.idea-ultimate
   ];
 in
 {
