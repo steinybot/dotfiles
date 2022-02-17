@@ -44,7 +44,8 @@ let
     }) unmanagedHomeFileNames;
 
   packages = with pkgs; [
-    iterm2
+    # FIXME: Not supported on aarch64-darwin.
+    #iterm2
     # FIXME: Not supported on aarch64-darwin.
     # https://github.com/NixOS/nixpkgs/pull/160115
     #jetbrains.idea-ultimate
@@ -60,6 +61,7 @@ let
   };
   customPkgs = import customPkgsRepo {};
   customPackages = with customPkgs; [
+    iterm2
     jetbrains.idea-ultimate
   ];
 in

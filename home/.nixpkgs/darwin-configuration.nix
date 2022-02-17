@@ -3,6 +3,9 @@
 let
   packages = with pkgs; [
     git
+    # FIXME: Update to latest version.
+    # https://github.com/NixOS/nixpkgs/pull/160382
+    #mas
     tree
     vim
   ];
