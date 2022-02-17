@@ -3,6 +3,7 @@
 let
   packages = with pkgs; [
     git
+    gnupg
     # FIXME: Not supported on aarch64-darwin.
     #iterm2
     # FIXME: Not supported on aarch64-darwin.
