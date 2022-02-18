@@ -4,6 +4,7 @@ let
   packages = with pkgs; [
     git
     gnupg
+    pinentry_mac
     tree
     vim
   ];
