@@ -19,7 +19,7 @@ let
     # do not work with Spotlight etc. See https://github.com/nix-community/home-manager/issues/1341.
     iterm2
     jetbrains.idea-ultimate
-    customIntelPkgs.keybase
+    customIntelPkgs.keybase-gui
     mas
   ];
 in
