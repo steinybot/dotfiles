@@ -4,14 +4,6 @@ let
   packages = with pkgs; [
     git
     gnupg
-    # FIXME: Not supported on aarch64-darwin.
-    #iterm2
-    # FIXME: Not supported on aarch64-darwin.
-    # https://github.com/NixOS/nixpkgs/pull/160115
-    #jetbrains.idea-ultimate
-    # FIXME: Update to latest version.
-    # https://github.com/NixOS/nixpkgs/pull/160382
-    #mas
     tree
     vim
   ];
