@@ -44,6 +44,8 @@ let
     }) unmanagedHomeFileNames;
 
   packages = with pkgs; [
+    gnupg
+    pinentry_mac
     sbt
     scala
     # FIXME: This doesn't work as glibc-2.33-59 is not supported on aarch64-darwin.
