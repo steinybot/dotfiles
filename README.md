@@ -6,6 +6,8 @@ This is all managed via [home-manager] and the [home.nix] configuration. `home.n
 
 ## Prerequisites
 
+### XCode
+
 You need to sign in to the App Store:
 
 ```shell
@@ -18,6 +20,22 @@ Lastly, agree to the Xcode license agreements:
 
 ```shell
 sudo xcodebuild -license
+```
+
+### Rosetta 2
+
+Some Nix packages are not built for Apple M1 yet and need to be emulated with Rosetta 2.
+
+To install Rosetta 2:
+
+```shell
+sudo softwareupdate --install-rosetta --agree-to-license
+```
+
+If that fails, try:
+
+```shell
+open '/System/Library/CoreServices/Rosetta 2 Updater.app'
 ```
 
 ## Setup

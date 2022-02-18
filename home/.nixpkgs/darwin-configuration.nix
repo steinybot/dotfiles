@@ -13,12 +13,13 @@ let
     ref = "dev";
   };
   customPkgs = import customPkgsRepo {};
+  customIntelPkgs = import customPkgsRepo { system = "x86_64-darwin"; };
   customPackages = with customPkgs; [
     # GUI applications have to be installed with Nix Darwin and not Home Manager otherwise they
     # do not work with Spotlight etc. See https://github.com/nix-community/home-manager/issues/1341.
     iterm2
     jetbrains.idea-ultimate
-    keybase
+    customIntelPkgs.keybase
     mas
   ];
 in
@@ -43,4 +44,8 @@ in
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
 
+  nix.extraOptions = ''
+    # With Rosetta 2 we can run Intell apps on Apple M1.
+    extra-platforms = x86_64-darwin aarch64-darwin
+  '';
 }
