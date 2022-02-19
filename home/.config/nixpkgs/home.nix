@@ -92,12 +92,20 @@ in
     delta = {
       enable = true;
     };
-    includes = [
-      {
-        contents = {
-          user.email = "jasonpickensnz@gmail.com";
+    signing = {
+      key = "C4A8C75C7876F1B5";
+      signByDefault = true;
+    };
+    userName = "Jason Pickens";
+    userEmail = "jasonpickensnz@gmail.com";
+    extraConfig = {
+      url = {
+        "ssh://git@github.com" = {
+          insteadOf = "https://github.com";
         };
-      }
+      };
+    };
+    includes = [
       {
         condition = "gitdir:~/src/goodcover/";
         contents = {
@@ -105,10 +113,5 @@ in
         };
       }
     ];
-    signing = {
-      key = "C4A8C75C7876F1B5";
-      signByDefault = true;
-    };
-    userName = "Jason Pickens";
   };
 }
