@@ -99,6 +99,25 @@ in
     userName = "Jason Pickens";
     userEmail = "jasonpickensnz@gmail.com";
     extraConfig = {
+      branch = {
+        autoSetupMerge = false;
+      };
+      core = {
+        autocrlf = false;
+      };
+      difftool = {
+        prompt = false;
+      };
+      merge = {
+        ff = false;
+      };
+      mergetool = {
+        prompt = false;
+        prompt = false;
+      };
+      pull = {
+        ff = only;
+      };
       url = {
         "ssh://git@github.com" = {
           insteadOf = "https://github.com";
