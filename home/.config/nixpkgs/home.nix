@@ -129,7 +129,7 @@ in
         prompt = false;
       };
       pull = {
-        ff = only;
+        ff = "only";
       };
       url = {
         "ssh://git@github.com" = {
