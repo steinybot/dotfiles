@@ -127,7 +127,6 @@ in
       };
       mergetool = {
         prompt = false;
-        prompt = false;
       };
       pull = {
         ff = only;
