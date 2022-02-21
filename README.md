@@ -2,7 +2,8 @@
 
 My dotfiles.
 
-This is all managed via [home-manager] and the [home.nix] configuration. `home.nix` will checkout this repository and link all the files to their correct places.
+This is all managed via [Home Manager] and the [home.nix] configuration. `home.nix` will checkout this repository and
+link all the files to their correct places.
 
 ## Prerequisites
 
@@ -40,7 +41,8 @@ open '/System/Library/CoreServices/Rosetta 2 Updater.app'
 
 ## Setup
 
-You need to bootstrap `home-manager` so that it can do the rest. This only needs to be done once, after that see the [update](#update) instructions.
+You need to bootstrap `home-manager` so that it can do the rest. This only needs to be done once, after that see the
+[update](#update) instructions.
 
 ### Automatic Setup
 
