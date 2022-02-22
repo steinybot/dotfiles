@@ -54,7 +54,7 @@ in
   services.nix-daemon.enable = true;
 
   system.defaults = {
-    NSGlobalDomain.AppleInterfaceStyle = "dark";
+    NSGlobalDomain.AppleInterfaceStyle = "Dark";
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
