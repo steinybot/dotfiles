@@ -149,7 +149,7 @@ in
 
   programs.ssh = {
     enable = true;
-    extraOptions = {
+    extraOptionOverrides = {
       IgnoreUnknown = "UseKeychain";
       UseKeychain = "yes";
     };
