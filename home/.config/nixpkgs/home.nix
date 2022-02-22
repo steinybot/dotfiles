@@ -149,13 +149,9 @@ in
 
   programs.ssh = {
     enable = true;
-    matchBlocks = {
-      "*" = {
-        extraOptions = {
-          IgnoreUnknown = "UseKeychain";
-          UseKeychain = "yes";
-        };
-      };
+    extraOptions = {
+      IgnoreUnknown = "UseKeychain";
+      UseKeychain = "yes";
     };
   };
 }
