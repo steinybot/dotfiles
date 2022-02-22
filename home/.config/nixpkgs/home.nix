@@ -146,4 +146,16 @@ in
       }
     ];
   };
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "*" = {
+        extraOptions = {
+          IgnoreUnknown = "UseKeychain";
+          UseKeychain = "yes";
+        };
+      };
+    };
+  };
 }
