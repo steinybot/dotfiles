@@ -31,8 +31,11 @@ in
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  nix.extraOptions = ''
+    # With Rosetta 2 we can run Intell apps on Apple M1.
+    extra-platforms = x86_64-darwin aarch64-darwin
+  '';
+
   nix.package = pkgs.nix;
 
   programs.gnupg.agent = {
@@ -47,12 +50,14 @@ in
   };
   # programs.fish.enable = true;
 
+  # Auto upgrade nix package and the daemon service.
+  services.nix-daemon.enable = true;
+
+  system.defaults = {
+    NSGlobalDomain.AppleInterfaceStyle = "dark";
+  };
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
-
-  nix.extraOptions = ''
-    # With Rosetta 2 we can run Intell apps on Apple M1.
-    extra-platforms = x86_64-darwin aarch64-darwin
-  '';
 }
