@@ -110,7 +110,7 @@ in
     stateVersion = 4;
   };
 
-  time.timeZone = "Pacific/Auckland";
+  #time.timeZone = "Pacific/Auckland";
 
   users.users.jason = {
     createHome = true;
