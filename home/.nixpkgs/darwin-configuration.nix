@@ -28,12 +28,6 @@ in
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
     systemPackages = packages ++ customPackages;
-
-    #variables = {
-    #  # Set NIX_PATH explicitly to work around https://github.com/NixOS/nixpkgs/issues/149791.
-    #  # The path is the same as the default when NIX_PATH is not set (https://github.com/NixOS/nix/blob/master/src/libexpr/eval.cc).
-    #  NIX_PATH = "\${NIX_PATH:-\${HOME}/.nix-defexpr/channels:nixpkgs=${nixStateDir}/profiles/per-user/root/channels/nixpkgs:${nixStateDir}/profiles/per-user/root/channels}";
-    #};
   };
 
   networking = {
@@ -53,6 +47,7 @@ in
         nixpkgs = "/nix/var/nix/profiles/per-user/root/channels/nixpkgs";
       }
       "/nix/var/nix/profiles/per-user/root/channels"
+      # FIXME: This ends up being there twice.
       "\${HOME}/.nix-defexpr/channels"
     ];
 
@@ -110,6 +105,7 @@ in
     stateVersion = 4;
   };
 
+  # FIXME: This doesn't work.
   #time.timeZone = "Pacific/Auckland";
 
   users.users.jason = {
