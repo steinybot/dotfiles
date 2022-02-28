@@ -18,8 +18,6 @@ let
     # GUI applications have to be installed with Nix Darwin and not Home Manager otherwise they
     # do not work with Spotlight etc. See https://github.com/nix-community/home-manager/issues/1341.
     iterm2
-    jetbrains.idea-ultimate
-    customIntelPkgs.keybase-gui
     mas
   ];
 in

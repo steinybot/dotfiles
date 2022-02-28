@@ -72,6 +72,11 @@ let
   };
   customPkgs = import customPkgsRepo {};
   customPackages = with customPkgs; [
+    jetbrains.idea-ultimate
+  ];
+  customIntelPkgs = import customPkgsRepo { system = "x86_64-darwin"; };
+  customIntelPackages = with customIntelPkgs; [
+    keybase-gui
   ];
 in
 {
@@ -84,7 +89,7 @@ in
   home.file = managedHomeFiles // unmanagedHomeFiles;
 
   # Install packages.
-  home.packages = packages ++ customPackages;
+  home.packages = packages ++ customPackages ++ customIntelPackages;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
