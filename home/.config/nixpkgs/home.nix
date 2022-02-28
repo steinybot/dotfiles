@@ -64,6 +64,8 @@ let
     scala
     # FIXME: This doesn't work as glibc-2.33-59 is not supported on aarch64-darwin.
     #steam
+    surfraw # This needs a browser such as w3m.
+    w3m
   ];
 
   customPkgsRepo = fetchGit {
