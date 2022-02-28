@@ -71,9 +71,14 @@ let
     ref = "dev";
   };
   customPkgs = import customPkgsRepo {};
-  customPackages = with customPkgs; [ ];
+  customPackages = with customPkgs; [
+    jetbrains.idea-ultimate
+    slack
+  ];
   customIntelPkgs = import customPkgsRepo { system = "x86_64-darwin"; };
-  customIntelPackages = with customIntelPkgs; [ ];
+  customIntelPackages = with customIntelPkgs; [
+    keybase-gui
+  ];
 in
 {
   # Home Manager needs a bit of information about you and the

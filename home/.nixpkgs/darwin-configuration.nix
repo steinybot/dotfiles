@@ -12,25 +12,20 @@ let
     ref = "dev";
   };
   customPkgs = import customPkgsRepo {};
-  customPackages = with customPkgs; [
-    # GUI applications have to be installed with Nix Darwin and not Home Manager otherwise they
-    # do not work with certain things like 'open'. They still do not work properly with Spotlight.
-    # See https://github.com/nix-community/home-manager/issues/1341.
-    iterm2
-    jetbrains.idea-ultimate
-    mas
-    slack
-  ];
   customIntelPkgs = import customPkgsRepo { system = "x86_64-darwin"; };
-  customIntelPackages = with customIntelPkgs; [
-    keybase-gui
+  customPackages = with customPkgs; [
+    # FIXME: This is not true.
+    # GUI applications have to be installed with Nix Darwin and not Home Manager otherwise they
+    # do not work with Spotlight etc. See https://github.com/nix-community/home-manager/issues/1341.
+    iterm2
+    mas
   ];
 in
 {
   environment = {
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
-    systemPackages = packages ++ customPackages ++ customIntelPackages;
+    systemPackages = packages ++ customPackages;
   };
 
   networking = {
