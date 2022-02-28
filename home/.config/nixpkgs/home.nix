@@ -73,6 +73,7 @@ let
   customPkgs = import customPkgsRepo {};
   customPackages = with customPkgs; [
     jetbrains.idea-ultimate
+    slack
   ];
   customIntelPkgs = import customPkgsRepo { system = "x86_64-darwin"; };
   customIntelPackages = with customIntelPkgs; [
