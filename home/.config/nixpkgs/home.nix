@@ -83,83 +83,91 @@ let
   ];
 in
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = username;
-  home.homeDirectory = homeDirectory;
+  home = {
+    # Home Manager needs a bit of information about you and the
+    # paths it should manage.
+    username = username;
+    homeDirectory = homeDirectory;
 
-  # Link home files.
-  home.file = managedHomeFiles // unmanagedHomeFiles;
+    # Link home files.
+    file = managedHomeFiles // unmanagedHomeFiles;
 
-  # Install packages.
-  home.packages = packages ++ customPackages ++ customIntelPackages;
+    # Install packages.
+    packages = packages ++ customPackages ++ customIntelPackages;
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.05";
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  # Keep git even if you do not use it so that fetchGit works even
-  # if XCode is not installed.
-  programs.git = {
-    enable = true;
-    delta = {
-      enable = true;
+    sessionVariables = {
+      EDITOR = "vim";
     };
-    signing = {
-      key = "C4A8C75C7876F1B5";
-      signByDefault = true;
-    };
-    userName = "Jason Pickens";
-    userEmail = "jasonpickensnz@gmail.com";
-    extraConfig = {
-      branch = {
-        autoSetupMerge = false;
-      };
-      core = {
-        autocrlf = false;
-      };
-      difftool = {
-        prompt = false;
-      };
-      merge = {
-        ff = false;
-      };
-      mergetool = {
-        prompt = false;
-      };
-      pull = {
-        ff = "only";
-      };
-      url = {
-        "ssh://git@github.com" = {
-          insteadOf = "https://github.com";
-        };
-      };
-    };
-    includes = [
-      {
-        condition = "gitdir:~/src/goodcover/";
-        contents = {
-          user.email = "jason@goodcover.com";
-        };
-      }
-    ];
+
+    # This value determines the Home Manager release that your
+    # configuration is compatible with. This helps avoid breakage
+    # when a new Home Manager release introduces backwards
+    # incompatible changes.
+    #
+    # You can update Home Manager without changing this value. See
+    # the Home Manager release notes for a list of state version
+    # changes in each release.
+    stateVersion = "22.05";
   };
 
-  programs.ssh = {
-    enable = true;
-    extraOptionOverrides = {
-      IgnoreUnknown = "UseKeychain";
-      UseKeychain = "yes";
+  programs = {
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+
+    # Keep git even if you do not use it so that fetchGit works even
+    # if XCode is not installed.
+    git = {
+      enable = true;
+      delta = {
+        enable = true;
+      };
+      signing = {
+        key = "C4A8C75C7876F1B5";
+        signByDefault = true;
+      };
+      userName = "Jason Pickens";
+      userEmail = "jasonpickensnz@gmail.com";
+      extraConfig = {
+        branch = {
+          autoSetupMerge = false;
+        };
+        core = {
+          autocrlf = false;
+        };
+        difftool = {
+          prompt = false;
+        };
+        merge = {
+          ff = false;
+        };
+        mergetool = {
+          prompt = false;
+        };
+        pull = {
+          ff = "only";
+        };
+        url = {
+          "ssh://git@github.com" = {
+            insteadOf = "https://github.com";
+          };
+        };
+      };
+      includes = [
+        {
+          condition = "gitdir:~/src/goodcover/";
+          contents = {
+            user.email = "jason@goodcover.com";
+          };
+        }
+      ];
+    };
+
+    ssh = {
+      enable = true;
+      extraOptionOverrides = {
+        IgnoreUnknown = "UseKeychain";
+        UseKeychain = "yes";
+      };
     };
   };
 }
