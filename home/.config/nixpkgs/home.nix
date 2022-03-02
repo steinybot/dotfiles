@@ -65,6 +65,7 @@ let
     # FIXME: This doesn't work as glibc-2.33-59 is not supported on aarch64-darwin.
     #steam
     surfraw # This needs a browser such as w3m.
+    thefuck
     w3m
   ];
 
