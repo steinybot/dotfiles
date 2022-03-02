@@ -169,5 +169,9 @@ in
         UseKeychain = "yes";
       };
     };
+
+    zsh = {
+      sessionVariables = config.home.sessionVariables;
+    };
   };
 }
