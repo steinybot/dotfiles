@@ -172,6 +172,7 @@ in
     };
 
     zsh = {
+      enable = true;
       sessionVariables = config.home.sessionVariables;
     };
   };
