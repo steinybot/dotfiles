@@ -173,10 +173,13 @@ in
 
     zsh = {
       enable = true;
-      sessionVariables = config.home.sessionVariables;
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" "thefuck" ];
+      };
+      shellAliases = {
+        nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
+        home-update = "home-manager switch --option tarball-ttl 0";
       };
     };
   };
