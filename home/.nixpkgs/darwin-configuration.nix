@@ -58,10 +58,10 @@ in
       enableSSHSupport = true;
     };
 
-    zsh = {
-      enable = true;
-      enableSyntaxHighlighting = true;
-    };
+#    zsh = {
+#      enable = true;
+#      enableSyntaxHighlighting = true;
+#    };
   };
 
   # Auto upgrade nix package and the daemon service.
