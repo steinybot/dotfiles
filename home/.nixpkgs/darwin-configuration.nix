@@ -107,6 +107,7 @@ in
   #time.timeZone = "Pacific/Auckland";
 
   users.users.jason = {
+    uid = 501;
     createHome = true;
     description = "Jason Pickens";
     home = "/Users/jason";
