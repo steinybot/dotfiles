@@ -16,7 +16,7 @@ let
     # This may update itself so we might need to run again.
     ".config/nixpkgs/home.nix" = {
       source = "${repoHomeFilesDirectory}/.config/nixpkgs/home.nix";
-      onChange = "home-manager --option tarball-ttl 0 switch";
+      onChange = "home-manager --option tarball-ttl 0 -b backup switch";
     };
 
     # Run rebuild when the configuration changes.
