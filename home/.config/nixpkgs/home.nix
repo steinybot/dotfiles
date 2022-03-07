@@ -174,6 +174,10 @@ in
     zsh = {
       enable = true;
       sessionVariables = config.home.sessionVariables;
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" "thefuck" ];
+      };
     };
   };
 }

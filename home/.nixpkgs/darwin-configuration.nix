@@ -112,6 +112,6 @@ in
     description = "Jason Pickens";
     home = "/Users/jason";
     name = "Jason Pickens";
-    shell = pkgs.zsh;
+#    shell = pkgs.zsh;
   };
 }
