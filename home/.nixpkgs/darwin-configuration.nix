@@ -52,10 +52,10 @@ in
   };
 
   programs = {
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
+#    gnupg.agent = {
+#      enable = true;
+#      enableSSHSupport = true;
+#    };
 
 #    zsh = {
 #      enable = true;
