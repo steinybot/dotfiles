@@ -12,7 +12,6 @@ let
     ref = "dev";
   };
   customPkgs = import customPkgsRepo {};
-  customIntelPkgs = import customPkgsRepo { system = "x86_64-darwin"; };
   customPackages = with customPkgs; [
     # FIXME: This is not true.
     # GUI applications have to be installed with Nix Darwin and not Home Manager otherwise they
