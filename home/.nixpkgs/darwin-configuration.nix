@@ -52,15 +52,22 @@ in
   };
 
   programs = {
-#    gnupg.agent = {
-#      enable = true;
-#      enableSSHSupport = true;
-#    };
+    # Create /etc/bashrc that loads the nix-darwin environment.
+    bash = {
+      enable = true;
+    };
 
-#    zsh = {
-#      enable = true;
-#      enableSyntaxHighlighting = true;
-#    };
+    # This doesn't work properly. It needs to be done in home manager instead.
+    # See: https://discourse.nixos.org/t/how-to-make-gpg-use-the-agent-from-programs-gnupg-agent/11834
+    #gnupg.agent = {
+    #  enable = true;
+    #  enableSSHSupport = true;
+    #};
+
+    # Create /etc/zshrc that loads the nix-darwin environment.
+    zsh = {
+      enable = true;
+    };
   };
 
   # Auto upgrade nix package and the daemon service.
