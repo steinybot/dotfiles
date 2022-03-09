@@ -77,10 +77,7 @@ let
   customPackages = with customPkgs; [
     jetbrains.idea-ultimate
     slack
-  ];
-  customIntelPkgs = import customPkgsRepo { system = "x86_64-darwin"; };
-  customIntelPackages = with customIntelPkgs; [
-    keybase-gui
+    pkgsCross.x86_64-darwin.keybase-gui
   ];
 in
 {
@@ -94,7 +91,7 @@ in
     file = managedHomeFiles // unmanagedHomeFiles;
 
     # Install packages.
-    packages = packages ++ customPackages ++ customIntelPackages;
+    packages = packages ++ customPackages;
 
     sessionVariables = {
       EDITOR = "vim";
