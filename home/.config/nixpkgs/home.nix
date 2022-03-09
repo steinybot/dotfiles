@@ -95,6 +95,9 @@ in
 
     sessionVariables = {
       EDITOR = "vim";
+      # I don't know why we need this. Nix-darwin is supposed to manage the agent for us.
+      # See https://discourse.nixos.org/t/how-to-make-gpg-use-the-agent-from-programs-gnupg-agent/11834.
+      SSH_AUTH_SOCK = "$(gpgconf --list-dirs agent-ssh-socket)";
     };
 
     # This value determines the Home Manager release that your
