@@ -35,7 +35,7 @@ let
     ".gnupg/gpg-agent.conf" = {
       text = ''
         enable-ssh-support
-        pinentry-program ${homeDirectory}/.nix-profile/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
+        pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
         default-cache-ttl 600
         max-cache-ttl 7200
         default-cache-ttl-ssh 600
@@ -95,8 +95,7 @@ in
 
     sessionVariables = {
       EDITOR = "vim";
-      #LPASS_ASKPASS = "${homeDirectory}/.nix-profile/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac";
-      LPASS_ASKPASS = "${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac";
+      LPASS_PINENTRY = "${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac";
       # I don't know why we need this. Nix-darwin is supposed to manage the agent for us.
       # See https://discourse.nixos.org/t/how-to-make-gpg-use-the-agent-from-programs-gnupg-agent/11834.
       SSH_AUTH_SOCK = "$(gpgconf --list-dirs agent-ssh-socket)";
