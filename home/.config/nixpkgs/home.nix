@@ -62,8 +62,6 @@ let
     pinentry_mac
     sbt
     scala
-    # FIXME: This doesn't work as glibc-2.33-59 is not supported on aarch64-darwin.
-    #steam
     surfraw # This needs a browser such as w3m.
     thefuck
     w3m
@@ -78,6 +76,7 @@ let
     jetbrains.idea-ultimate
     slack
     pkgsCross.x86_64-darwin.keybase-gui
+    pkgsCross.x86_64-darwin.steam
   ];
 in
 {
