@@ -59,6 +59,7 @@ let
 
   packages = with pkgs; [
     gnupg
+    google-chrome
     lastpass-cli
     pinentry_mac
     sbt
