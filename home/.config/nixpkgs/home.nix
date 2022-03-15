@@ -59,7 +59,6 @@ let
 
   packages = with pkgs; [
     gnupg
-    google-chrome
     lastpass-cli
     pinentry_mac
     sbt
@@ -75,6 +74,7 @@ let
   };
   customPkgs = import customPkgsRepo {};
   customPackages = with customPkgs; [
+    google-chrome
     jetbrains.idea-ultimate
     slack
     pkgsCross.x86_64-darwin.keybase-gui
