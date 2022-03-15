@@ -181,7 +181,8 @@ in
       };
       shellAliases = {
         nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
-        home-update = "home-manager switch --option tarball-ttl 0";
+        home-update = "home-manager --option tarball-ttl 0 switch";
+        home-update-local = "home-manager -f '${homeDirectory}/src/dotfiles/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
       };
     };
   };
