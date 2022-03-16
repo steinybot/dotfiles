@@ -114,6 +114,15 @@ in
   };
 
   programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      nix-direnv = {
+        enable = true;
+      };
+    };
+
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 

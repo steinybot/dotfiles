@@ -38,6 +38,10 @@ in
     extraOptions = ''
       # With Rosetta 2 we can run Intell apps on Apple M1.
       extra-platforms = x86_64-darwin aarch64-darwin
+
+      # Prevent nix-shell stuff from being garbage collected (for nix-direnv).
+      keep-outputs = true
+      keep-derivations = true
     '';
 
     nixPath = [
