@@ -95,6 +95,11 @@ in
     # Install packages.
     packages = packages ++ customPackages;
 
+    sessionPath = [
+      # Add Keybase to the PATH.
+      "${pkgsCross.x86_64-darwin.keybase-gui}/Applications/Keybase.app/Contents/SharedSupport/bin"
+    ];
+
     sessionVariables = {
       EDITOR = "vim";
       LPASS_PINENTRY = "${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac";
