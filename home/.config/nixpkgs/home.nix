@@ -97,7 +97,7 @@ in
 
     sessionPath = [
       # Add Keybase to the PATH.
-      "${pkgsCross.x86_64-darwin.keybase-gui}/Applications/Keybase.app/Contents/SharedSupport/bin"
+      "${customPkgs.pkgsCross.x86_64-darwin.keybase-gui}/Applications/Keybase.app/Contents/SharedSupport/bin"
     ];
 
     sessionVariables = {
