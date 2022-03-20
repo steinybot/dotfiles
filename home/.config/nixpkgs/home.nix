@@ -40,6 +40,7 @@ let
         max-cache-ttl 7200
         default-cache-ttl-ssh 600
         max-cache-ttl-ssh 7200
+        log-file ${homeDirectory}/.gnupg/gpg-agent.log
       '';
     };
   };
