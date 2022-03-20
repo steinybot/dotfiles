@@ -61,7 +61,6 @@ let
   packages = with pkgs; [
     gnupg
     lastpass-cli
-    keybase
     pinentry_mac
     sbt
     scala
