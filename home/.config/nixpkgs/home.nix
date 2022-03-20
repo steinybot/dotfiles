@@ -69,6 +69,12 @@ let
     w3m
   ];
 
+  # Prefer using pkgsCross but some packages do not cross build so we have to build the whole thing for x86_64.
+  intelPkgs = import customPkgsRepo { system = "x86_64-darwin"; };
+  intelPackages = with intelPkgs; [
+    graalvm11-ce
+  ];
+
   customPkgsRepo = fetchGit {
     url = "https://github.com/steinybot/nixpkgs.git";
     ref = "dev";
@@ -93,7 +99,7 @@ in
     file = managedHomeFiles // unmanagedHomeFiles;
 
     # Install packages.
-    packages = packages ++ customPackages;
+    packages = packages ++ intelPackages ++ customPackages;
 
     sessionPath = [
       # Add Keybase to the PATH.
