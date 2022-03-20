@@ -85,10 +85,16 @@ If `home/.config` changes then `home-manager` will be rerun to activate the new 
 The downside to having `home-manager` manage its own configuration is that if the configuration is invalid then it
 cannot update itself.
 
-To fix that, simply run `bootstrap` again:
+To fix that you may need to run `bootstrap` again:
 
 ```shell
 nix-bootstrap
+```
+
+Assuming that you have this repository checked out to `~/src/dotfiles`, you can make changes there and then run:
+
+```shell
+home-update-local
 ```
 
 [bootstrap]: https://github.com/steinybot/bootstrap
