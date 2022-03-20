@@ -43,6 +43,10 @@ let
         log-file ${homeDirectory}/.gnupg/gpg-agent.log
       '';
     };
+
+    "Library/Java/JavaVirtualMachines/graalvm11-ce" = {
+      source = toString intelPkgs.graalvm11-ce;
+    };
   };
   managedHomeFileNames = builtins.attrNames managedHomeFiles;
 
