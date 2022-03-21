@@ -63,8 +63,10 @@ let
     }) unmanagedHomeFileNames;
 
   packages = with pkgs; [
+    cassandra
     gnupg
     lastpass-cli
+    mysql
     pinentry_mac
     sbt
     scala
