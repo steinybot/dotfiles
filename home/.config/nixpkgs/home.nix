@@ -93,6 +93,12 @@ let
     pkgsCross.x86_64-darwin.keybase-gui
     pkgsCross.x86_64-darwin.steam
   ];
+
+  shellAliases = {
+    nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
+    home-update = "home-manager --option tarball-ttl 0 switch";
+    home-update-local = "home-manager -f '${homeDirectory}/src/dotfiles/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
+  };
 in
 {
   home = {
@@ -132,6 +138,14 @@ in
   };
 
   programs = {
+    bash = {
+      enable = true;
+      initExtra = ''
+        source ~/.iterm2/.iterm2_shell_integration.bash
+      '';
+      shellAliases = shellAliases;
+    };
+
     direnv = {
       enable = true;
       enableBashIntegration = true;
@@ -202,15 +216,14 @@ in
 
     zsh = {
       enable = true;
+      initExtra = ''
+        source ~/.iterm2/.iterm2_shell_integration.zsh
+      '';
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" "thefuck" ];
       };
-      shellAliases = {
-        nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
-        home-update = "home-manager --option tarball-ttl 0 switch";
-        home-update-local = "home-manager -f '${homeDirectory}/src/dotfiles/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
-      };
+      shellAliases = shellAliases;
     };
   };
 }
