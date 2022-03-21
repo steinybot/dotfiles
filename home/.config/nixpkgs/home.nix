@@ -98,6 +98,8 @@ let
     nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
     home-update = "home-manager --option tarball-ttl 0 switch";
     home-update-local = "home-manager -f '${homeDirectory}/src/dotfiles/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
+    mysql-start = ''mysqld "--datadir=''${GC_CORE_DIR}/datadir/mysql" "--log-error=''${GC_CORE_DIR}/datadir/mysql/goodness.err" --pid-file=goodness.pid "--socket=''${GC_CORE_DIR}/datadir/mysql.sock" > /dev/null 2>&1 &'';
+    mysql-stop = ''mysqladmin shutdown "--socket=''${GC_CORE_DIR}/datadir/mysql.sock"'';
   };
 in
 {
