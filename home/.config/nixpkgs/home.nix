@@ -204,7 +204,6 @@ in
       enable = true;
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.bash
-        source ~/.config/goodcover/goodcover.sh
       '';
       shellAliases = shellAliases;
     };
@@ -281,7 +280,6 @@ in
       enable = true;
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.zsh
-        source ~/.config/goodcover/goodcover.sh
       '';
       oh-my-zsh = {
         enable = true;
