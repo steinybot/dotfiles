@@ -3,6 +3,8 @@
 let
   username = "jason";
   homeDirectory = "/Users/${username}";
+
+  patchesDirectory = ../../../patches;
   
   # The path to this repository once it has been checked out.
   dotFilesRepo = fetchGit {
@@ -100,6 +102,7 @@ let
     home-update-local = "home-manager -f '${homeDirectory}/src/dotfiles/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
     mysql-start = ''mysqld "--datadir=''${GC_CORE_DIR}/datadir/mysql" "--log-error=''${GC_CORE_DIR}/datadir/mysql/goodness.err" --pid-file=goodness.pid "--socket=''${GC_CORE_DIR}/datadir/mysql.sock" > /dev/null 2>&1 &'';
     mysql-stop = ''mysqladmin shutdown "--socket=''${GC_CORE_DIR}/datadir/mysql.sock"'';
+    cassandra-start = ''MAX_HEAP_SIZE=4G HEAP_NEWSIZE=800M CASSANDRA_LOG_DIR="''${GC_CORE_DIR}/datadir/cassandra/logs" cassandra -p "''${GC_CORE_DIR}/datadir/cassandra/cassandra.pid" "-Dcassandra.config=file://''${HOME}/.config/goodcover/cassandra.yaml"'';
   };
 in
 {
@@ -138,6 +141,30 @@ in
     # changes in each release.
     stateVersion = "22.05";
   };
+
+  nixpkgs.overlays = [
+    (self: super: {
+      cassandra = super.cassandra.overrideAttrs (old: {
+        # Workaround for https://github.com/NixOS/nixpkgs/issues/165175.
+        patches = (old.patches or []) ++
+          builtins.map
+            (name: "${patchesDirectory}/cassandra/${name}")
+            (builtins.attrNames (builtins.readDir "${patchesDirectory}/cassandra"));
+        postInstall =
+          let
+            jna = pkgs.fetchurl {
+              url = "https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.10.0/jna-5.10.0.jar";
+              sha256 = "sha256-4zXBBnn3QyB9gixfeUjpMDGYNUkldanbprlPijuW/Mg=";
+            };
+          in ''
+            ${(old.postInstall or "")}
+
+            rm "$out/lib/jna-4.2.2.jar"
+            cp "${jna}" "$out/lib/"
+          '';
+      });
+    })
+  ];
 
   programs = {
     bash = {
