@@ -82,11 +82,12 @@ in
   };
 
   system = {
-    activationScripts = {
-      extraHosts.text = ''
-        grep -qxF '127.0.0.1 gc.local' /etc/hosts || sudo echo '127.0.0.1 gc.local' >> /etc/hosts
-      '';
-    };
+    # FIXME: Doesn't look like we have permissions here.
+    #activationScripts = {
+    #  extraHosts.text = ''
+    #    grep -qxF '127.0.0.1 gc.local' /etc/hosts || sudo echo '127.0.0.1 gc.local' >> /etc/hosts
+    #  '';
+    #};
     defaults = {
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
