@@ -100,9 +100,6 @@ let
     nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
     home-update = "home-manager --option tarball-ttl 0 switch";
     home-update-local = "home-manager -f '${homeDirectory}/src/dotfiles/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
-    mysql-start = ''mysqld "--datadir=''${GC_CORE_DIR}/datadir/mysql" "--log-error=''${GC_CORE_DIR}/datadir/mysql/goodness.err" --pid-file=goodness.pid "--socket=''${GC_CORE_DIR}/datadir/mysql.sock" > /dev/null 2>&1 &'';
-    mysql-stop = ''mysqladmin shutdown "--socket=''${GC_CORE_DIR}/datadir/mysql.sock"'';
-    cassandra-start = ''MAX_HEAP_SIZE=4G HEAP_NEWSIZE=800M CASSANDRA_LOG_DIR="''${GC_CORE_DIR}/datadir/cassandra/logs" cassandra -p "''${GC_CORE_DIR}/datadir/cassandra/cassandra.pid" "-Dcassandra.config=file://''${HOME}/.config/goodcover/cassandra.yaml"'';
   };
 in
 {
@@ -171,6 +168,7 @@ in
       enable = true;
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.bash
+        source ~/.config/goodcover/goodcover.sh
       '';
       shellAliases = shellAliases;
     };
@@ -247,6 +245,7 @@ in
       enable = true;
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.zsh
+        source ~/.config/goodcover/goodcover.sh
       '';
       oh-my-zsh = {
         enable = true;
