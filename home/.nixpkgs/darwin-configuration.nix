@@ -84,7 +84,11 @@ in
   system = {
     activationScripts = {
       postActivation.text = ''
-        grep -qxF '127.0.0.1 gc.local' /etc/hosts || echo '127.0.0.1 gc.local' >> /etc/hosts
+        grep -q '\sgc\.local' /etc/hosts || cat <<- 'EOF' >> /etc/hosts
+
+          # Host name for local Goodcover development.
+          127.0.0.1       gc.local
+        EOF
       '';
     };
 
