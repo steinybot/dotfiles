@@ -82,11 +82,6 @@ in
   };
 
   system = {
-    activationScripts = {
-      extraHosts.text = ''
-        grep -qxF '127.0.0.1 gc.local' /etc/hosts || sudo bash -c 'echo "127.0.0.1 gc.local" >> /etc/hosts'
-      '';
-    };
     defaults = {
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
@@ -109,6 +104,26 @@ in
 
       loginwindow = {
         GuestEnabled = false;
+      };
+    };
+
+    etc = {
+      hosts = {
+        enable = true;
+        text = ''
+          ##
+          # Host Database
+          #
+          # localhost is used to configure the loopback interface
+          # when the system is booting.  Do not change this entry.
+          ##
+          127.0.0.1	      localhost
+          255.255.255.255	broadcasthost
+          ::1             localhost
+
+          # Goodcover
+          127.0.0.1       gc.local
+        '';
       };
     };
 
