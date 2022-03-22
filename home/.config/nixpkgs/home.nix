@@ -170,7 +170,7 @@ in
     bash = {
       enable = true;
       initExtra = ''
-        source ~/.iterm2/.iterm2_shell_integration.bash
+        source ~/.config/iterm2/.iterm2_shell_integration.bash
       '';
       shellAliases = shellAliases;
     };
@@ -246,7 +246,7 @@ in
     zsh = {
       enable = true;
       initExtra = ''
-        source ~/.iterm2/.iterm2_shell_integration.zsh
+        source ~/.config/iterm2/.iterm2_shell_integration.zsh
       '';
       oh-my-zsh = {
         enable = true;
