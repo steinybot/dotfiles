@@ -22,26 +22,6 @@ let
 in
 {
   environment = {
-    etc = {
-      hosts = {
-        enable = true;
-        text = ''
-          ##
-          # Host Database
-          #
-          # localhost is used to configure the loopback interface
-          # when the system is booting.  Do not change this entry.
-          ##
-          127.0.0.1	      localhost
-          255.255.255.255	broadcasthost
-          ::1             localhost
-
-          # Goodcover
-          127.0.0.1       gc.local
-        '';
-      };
-    };
-  
     shells = with pkgs; [ bashInteractive zsh ];
   
     # List packages installed in system profile. To search by name, run:
@@ -102,6 +82,12 @@ in
   };
 
   system = {
+    activationScripts = {
+      postActivation.text = ''
+        grep -qxF '127.0.0.1 gc.local' /etc/hosts || echo '127.0.0.1 gc.local' >> /etc/hosts
+      '';
+    };
+
     defaults = {
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
