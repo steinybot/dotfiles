@@ -82,6 +82,11 @@ in
   };
 
   system = {
+    activationScripts = {
+      extraHosts.text = ''
+        grep -qxF '127.0.0.1 gc.local' /etc/hosts || echo '127.0.0.1 gc.local' >> /etc/hosts
+      '';
+    };
     defaults = {
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
