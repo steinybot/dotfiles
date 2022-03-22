@@ -5,7 +5,12 @@ let
   homeDirectory = "/Users/${username}";
 
   patchesDirectory = ../../../patches;
-  
+
+  srcDirectory = "${homeDirectory}/src";
+  dotfilesSrcDirectory = "${srcDirectory}/dotfiles";
+  goodcoverSrcDirectory = "${srcDirectory}/goodcover";
+  goodcoverCoreDirectory = "${goodcoverSrcDirectory}/core";
+
   # The path to this repository once it has been checked out.
   dotFilesRepo = fetchGit {
     url = "https://github.com/steinybot/dotfiles.git";
@@ -99,7 +104,7 @@ let
   shellAliases = {
     nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
     home-update = "home-manager --option tarball-ttl 0 switch";
-    home-update-local = "home-manager -f '${homeDirectory}/src/dotfiles/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
+    home-update-local = "home-manager -f '${dotfilesSrcDirectory}/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
   };
 in
 {
@@ -137,6 +142,37 @@ in
     # the Home Manager release notes for a list of state version
     # changes in each release.
     stateVersion = "22.05";
+  };
+
+  launchd.agents = {
+    gcCassandra = {
+      enable = true;
+      config = {
+        EnvironmentVariables = {
+          MAX_HEAP_SIZE = "4G";
+          HEAP_NEWSIZE = "800M";
+          CASSANDRA_LOG_DIR = "${goodcoverCoreDirectory}/datadir/cassandra/logs";
+        };
+        Label = "com.goodcover.cassandra";
+        ProgramArguments = [
+          "${pkgs.cassandra}/bin/cassandra"
+          "-f"
+          "-Dcassandra.config=file://${homeDirectory}/.config/goodcover/cassandra.yaml"
+        ];
+      };
+    };
+    gcMySQL = {
+      enable = true;
+      config = {
+        Label = "com.goodcover.mysql";
+        ProgramArguments = [
+          "${pkgs.mysql}/bin/mysqld_safe"
+          "--datadir=${goodcoverCoreDirectory}/datadir/mysql"
+          "--log-error=${goodcoverCoreDirectory}/datadir/mysql/mysql.err"
+          "--socket=${goodcoverCoreDirectory}/datadir/mysql.sock"
+        ];
+      };
+    };
   };
 
   nixpkgs.overlays = [
@@ -225,7 +261,7 @@ in
       };
       includes = [
         {
-          condition = "gitdir:~/src/goodcover/";
+          condition = "gitdir:${goodcoverSrcDirectory}";
           contents = {
             user.email = "jason@goodcover.com";
           };
