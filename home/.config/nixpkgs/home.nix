@@ -73,7 +73,7 @@ let
     cassandra
     gnupg
     lastpass-cli
-    mysql
+    mysql57
     pinentry_mac
     sbt
     scala
@@ -166,7 +166,7 @@ in
       config = {
         Label = "com.goodcover.mysql";
         ProgramArguments = [
-          "${pkgs.mysql}/bin/mysqld_safe"
+          "${pkgs.mysql57}/bin/mysqld_safe"
           "--datadir=${goodcoverCoreDirectory}/datadir/mysql"
           "--log-error=${goodcoverCoreDirectory}/datadir/mysql/mysql.err"
           "--socket=${goodcoverCoreDirectory}/datadir/mysql.sock"
