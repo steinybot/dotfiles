@@ -84,7 +84,8 @@ let
   ];
 
   # Prefer using pkgsCross but some packages do not cross build so we have to build the whole thing for x86_64.
-  intelPkgs = import customPkgsRepo { system = "x86_64-darwin"; };
+  # TODO: Where should <nixpkgs> come from?
+  intelPkgs = import <nixpkgs> { system = "x86_64-darwin"; };
   intelPackages = with intelPkgs; [
     graalvm11-ce
   ];
@@ -95,6 +96,7 @@ let
   };
   customPkgs = import customPkgsRepo {};
   customPackages = with customPkgs; [
+    docker-desktop
     google-chrome
     jetbrains.idea-ultimate
     slack
