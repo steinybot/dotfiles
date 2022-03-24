@@ -71,6 +71,7 @@ let
 
   packages = with pkgs; [
     cassandra
+    element-desktop
     gnupg
     lastpass-cli
     mysql
