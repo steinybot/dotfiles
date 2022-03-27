@@ -238,9 +238,6 @@ in
       userName = "Jason Pickens";
       userEmail = "jasonpickensnz@gmail.com";
       extraConfig = {
-        branch = {
-          autoSetupMerge = false;
-        };
         core = {
           autocrlf = false;
         };
