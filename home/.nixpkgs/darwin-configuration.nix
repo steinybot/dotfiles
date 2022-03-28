@@ -87,7 +87,9 @@ in
         grep -q '\sgc\.local' /etc/hosts || cat << 'EOF' >> /etc/hosts
 
         # Host name for local Goodcover development.
-        127.0.0.1       gc.local
+        # Never use .local TLD (https://datatracker.ietf.org/doc/html/rfc6762)
+        # Use .home.arpa instead (https://www.rfc-editor.org/rfc/rfc8375.html).
+        127.0.0.1       gc.home.arpa
         EOF
       '';
     };
