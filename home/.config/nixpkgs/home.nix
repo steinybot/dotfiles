@@ -70,6 +70,7 @@ let
     }) unmanagedHomeFileNames;
 
   packages = with pkgs; [
+    ammonite
     cassandra
     element-desktop
     gnupg
