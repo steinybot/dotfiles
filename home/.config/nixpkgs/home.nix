@@ -71,6 +71,7 @@ let
 
   packages = with pkgs; [
     ammonite
+    bcompare
     cassandra
     element-desktop
     gnupg
