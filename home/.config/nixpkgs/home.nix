@@ -78,8 +78,9 @@ let
     graalvm11-ce
   ];
 
-  unstablePkgsRepo = fetchTarball {
-    url = "https://github.com/nixos/nixpkgs/archive/nixpkgs-unstable.tar.gz";
+  unstablePkgsRepo = fetchGit {
+    url = "https://github.com/nixos/nixpkgs.git";
+    ref = "nixpkgs-unstable";
   };
   unstablePkgs = import unstablePkgsRepo {};
 
