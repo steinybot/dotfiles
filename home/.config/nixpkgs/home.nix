@@ -114,7 +114,7 @@ in
     # Install packages.
     packages = with pkgs; [
       ammonite
-      bcompare
+      unstablePkgs.bcompare
       cassandra
       customPkgs.docker-desktop
       element-desktop
