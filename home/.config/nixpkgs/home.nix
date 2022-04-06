@@ -69,43 +69,31 @@ let
       recursive = true;
     }) unmanagedHomeFileNames;
 
-  packages = with pkgs; [
-    ammonite
-    bcompare
-    cassandra
-    element-desktop
-    gnupg
-    lastpass-cli
-    mysql
-    pinentry_mac
-    ripgrep
-    sbt
-    scala
-    surfraw # This needs a browser such as w3m.
-    thefuck
-    w3m
-  ];
-
   # Prefer using pkgsCross but some packages do not cross build so we have to build the whole thing for x86_64.
   # TODO: Where should <nixpkgs> come from?
-  intelPkgs = import <nixpkgs> { system = "x86_64-darwin"; };
+  intelPkgs = import <nixpkgs> {
+    config = config.nixpkgs.config;
+    system = "x86_64-darwin";
+  };
   intelPackages = with intelPkgs; [
     graalvm11-ce
   ];
+
+  unstablePkgsRepo = fetchGit {
+    url = "https://github.com/nixos/nixpkgs.git";
+    ref = "nixpkgs-unstable";
+  };
+  unstablePkgs = import unstablePkgsRepo {
+    config = config.nixpkgs.config;
+  };
 
   customPkgsRepo = fetchGit {
     url = "https://github.com/steinybot/nixpkgs.git";
     ref = "dev";
   };
-  customPkgs = import customPkgsRepo {};
-  customPackages = with customPkgs; [
-    docker-desktop
-    google-chrome
-    jetbrains.idea-ultimate
-    slack
-    pkgsCross.x86_64-darwin.keybase-gui
-    pkgsCross.x86_64-darwin.steam
-  ];
+  customPkgs = import customPkgsRepo {
+    config = config.nixpkgs.config;
+  };
 
   shellAliases = {
     nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
@@ -124,7 +112,28 @@ in
     file = managedHomeFiles // unmanagedHomeFiles;
 
     # Install packages.
-    packages = packages ++ intelPackages ++ customPackages;
+    packages = with pkgs; [
+      ammonite
+      bcompare
+      cassandra
+      customPkgs.docker-desktop
+      element-desktop
+      gnupg
+      customPkgs.google-chrome
+      customPkgs.jetbrains.idea-ultimate
+      customPkgs.pkgsCross.x86_64-darwin.keybase-gui
+      lastpass-cli
+      mysql
+      pinentry_mac
+      ripgrep
+      sbt
+      scala
+      customPkgs.slack
+      customPkgs.pkgsCross.x86_64-darwin.steam
+      surfraw # This needs a browser such as w3m.
+      thefuck
+      w3m
+    ];
 
     sessionPath = [
       # Add Keybase to the PATH.
