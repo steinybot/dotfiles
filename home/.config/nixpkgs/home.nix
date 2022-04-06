@@ -79,13 +79,13 @@ let
     graalvm11-ce
   ];
 
-  unstablePkgsRepo = fetchGit {
-    url = "https://github.com/nixos/nixpkgs.git";
-    ref = "nixpkgs-unstable";
-  };
-  unstablePkgs = import unstablePkgsRepo {
-    config = config.nixpkgs.config;
-  };
+#  unstablePkgsRepo = fetchGit {
+#    url = "https://github.com/nixos/nixpkgs.git";
+#    ref = "nixpkgs-unstable";
+#  };
+#  unstablePkgs = import unstablePkgsRepo {
+#    config = config.nixpkgs.config;
+#  };
 
   customPkgsRepo = fetchGit {
     url = "https://github.com/steinybot/nixpkgs.git";
@@ -114,7 +114,7 @@ in
     # Install packages.
     packages = with pkgs; [
       ammonite
-      unstablePkgs.bcompare
+      bcompare
       cassandra
       customPkgs.docker-desktop
       element-desktop
