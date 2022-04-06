@@ -72,28 +72,22 @@ let
   # Prefer using pkgsCross but some packages do not cross build so we have to build the whole thing for x86_64.
   # TODO: Where should <nixpkgs> come from?
   intelPkgs = import <nixpkgs> {
-    config = config.nixpkgs.config;
     system = "x86_64-darwin";
   };
   intelPackages = with intelPkgs; [
     graalvm11-ce
   ];
 
-#  unstablePkgsRepo = fetchGit {
-#    url = "https://github.com/nixos/nixpkgs.git";
-#    ref = "nixpkgs-unstable";
-#  };
-#  unstablePkgs = import unstablePkgsRepo {
-#    config = config.nixpkgs.config;
-#  };
+  unstablePkgsRepo = fetchTarball {
+    url = "https://github.com/nixos/nixpkgs/archive/nixpkgs-unstable.tar.gz";
+  };
+  unstablePkgs = import unstablePkgsRepo {};
 
   customPkgsRepo = fetchGit {
     url = "https://github.com/steinybot/nixpkgs.git";
     ref = "dev";
   };
-  customPkgs = import customPkgsRepo {
-    config = config.nixpkgs.config;
-  };
+  customPkgs = import customPkgsRepo {};
 
   shellAliases = {
     nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
@@ -114,7 +108,7 @@ in
     # Install packages.
     packages = with pkgs; [
       ammonite
-      bcompare
+      unstablePkgs.bcompare
       cassandra
       customPkgs.docker-desktop
       element-desktop
