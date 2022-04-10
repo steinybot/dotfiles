@@ -112,7 +112,7 @@ in
       element-desktop
       gnupg
       customPkgs.google-chrome
-      intellPkgs.graalvm11-ce
+      intelPkgs.graalvm11-ce
       customPkgs.jetbrains.idea-ultimate
       customPkgs.pkgsCross.x86_64-darwin.keybase-gui
       lastpass-cli
