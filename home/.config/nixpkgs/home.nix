@@ -118,6 +118,7 @@ in
       customPkgs.jetbrains.idea-ultimate
       customPkgs.pkgsCross.x86_64-darwin.keybase-gui
       lastpass-cli
+      maven
       mysql
       pinentry_mac
       ripgrep
