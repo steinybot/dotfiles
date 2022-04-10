@@ -74,9 +74,6 @@ let
   intelPkgs = import <nixpkgs> {
     system = "x86_64-darwin";
   };
-  intelPackages = with intelPkgs; [
-    graalvm11-ce
-  ];
 
   unstablePkgsRepo = fetchGit {
     url = "https://github.com/nixos/nixpkgs.git";
@@ -115,6 +112,7 @@ in
       element-desktop
       gnupg
       customPkgs.google-chrome
+      intellPkgs.graalvm11-ce
       customPkgs.jetbrains.idea-ultimate
       customPkgs.pkgsCross.x86_64-darwin.keybase-gui
       lastpass-cli
