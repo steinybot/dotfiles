@@ -79,7 +79,20 @@ let
     url = "https://github.com/nixos/nixpkgs.git";
     ref = "nixpkgs-unstable";
   };
-  unstablePkgs = import unstablePkgsRepo {};
+  unstablePkgs = import unstablePkgsRepo {
+    overlays = [
+        (self: super: {
+          bcompare = super.bcompare.overrideAttrs (old: {
+            postInstall =
+              ''
+                ${(old.postInstall or "")}
+
+                ln $out/Applications/BCompare.app/Contents/MacOS/bcomp bin/bcomp
+              '';
+          });
+        })
+      ];
+  };
 
   customPkgsRepo = fetchGit {
     url = "https://github.com/steinybot/nixpkgs.git";
@@ -187,7 +200,6 @@ in
   nixpkgs.overlays = [
     (self: super: {
       bcompare = super.bcompare.overrideAttrs (old: {
-        # Workaround for https://github.com/NixOS/nixpkgs/issues/165175.
         postInstall =
           ''
             ${(old.postInstall or "")}
