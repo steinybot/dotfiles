@@ -186,6 +186,15 @@ in
 
   nixpkgs.overlays = [
     (self: super: {
+      bcompare = super.bcompare.overrideAttrs (old: {
+        # Workaround for https://github.com/NixOS/nixpkgs/issues/165175.
+        postInstall =
+          ''
+            ${(old.postInstall or "")}
+
+            ln $out/Applications/BCompare.app/Contents/MacOS/bcomp bin/bcomp
+          '';
+      });
       cassandra = super.cassandra.overrideAttrs (old: {
         # Workaround for https://github.com/NixOS/nixpkgs/issues/165175.
         patches = (old.patches or []) ++
