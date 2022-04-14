@@ -126,7 +126,7 @@ in
       gnupg
       customPkgs.google-chrome
       intelPkgs.graalvm11-ce
-      customPkgs.jetbrains.idea-ultimate
+      jetbrains.idea-ultimate
       customPkgs.pkgsCross.x86_64-darwin.keybase-gui
       lastpass-cli
       maven
@@ -135,7 +135,7 @@ in
       ripgrep
       sbt
       scala
-      customPkgs.slack
+      slack
       customPkgs.pkgsCross.x86_64-darwin.steam
       surfraw # This needs a browser such as w3m.
       thefuck
