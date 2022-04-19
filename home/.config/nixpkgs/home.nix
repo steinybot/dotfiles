@@ -127,6 +127,7 @@ in
       customPkgs.google-chrome
       intelPkgs.graalvm11-ce
       jetbrains.idea-ultimate
+      jq
       customPkgs.pkgsCross.x86_64-darwin.keybase-gui
       lastpass-cli
       maven
