@@ -126,7 +126,7 @@ in
       gnupg
       customPkgs.google-chrome
       intelPkgs.graalvm11-ce
-      unstablePkgs.jetbrains.idea-ultimate
+      customPkgs.jetbrains.idea-ultimate
       jq
       customPkgs.pkgsCross.x86_64-darwin.keybase-gui
       lastpass-cli
