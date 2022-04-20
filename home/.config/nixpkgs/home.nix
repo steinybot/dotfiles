@@ -133,6 +133,7 @@ in
       maven
       mysql
       pinentry_mac
+      unstablePkgs.postman
       ripgrep
       sbt
       scala
