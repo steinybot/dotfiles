@@ -132,6 +132,7 @@ in
       lastpass-cli
       maven
       mysql
+      nodejs
       nodePackages.npm
       pinentry_mac
       unstablePkgs.postman
