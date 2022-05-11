@@ -132,6 +132,7 @@ in
       lastpass-cli
       maven
       mysql
+      nodePackages.npm
       pinentry_mac
       unstablePkgs.postman
       ripgrep
@@ -142,6 +143,7 @@ in
       surfraw # This needs a browser such as w3m.
       thefuck
       w3m
+      yarn
     ];
 
     sessionPath = [
