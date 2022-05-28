@@ -29,6 +29,21 @@ in
     systemPackages = packages ++ customPackages;
   };
 
+  # I give in...
+  homebrew = {
+    enable = true;
+
+    autoUpdate = true;
+    brews = [
+    ];
+    casks = [
+    ];
+    cleanup = "zap";
+    masApps = {
+      Xcode = 497799835;
+    };
+  };
+
   networking = {
     computerName = "Goodness Gracious";
     hostName = "goodness";
