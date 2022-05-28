@@ -99,7 +99,7 @@ in
   system = {
     activationScripts = {
       postActivation.text = ''
-        grep -q '\sgc\.local' /etc/hosts || cat << 'EOF' >> /etc/hosts
+        grep -q '\slocal\.goodcover\.com' /etc/hosts || cat << 'EOF' >> /etc/hosts
 
         # Host name for local Goodcover development.
         # Never use .local TLD (https://datatracker.ietf.org/doc/html/rfc6762).
