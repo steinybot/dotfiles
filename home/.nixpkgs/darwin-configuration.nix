@@ -37,7 +37,7 @@ in
     brews = [
     ];
     casks = [
-      gimp
+      "gimp"
     ];
     cleanup = "zap";
     masApps = {
