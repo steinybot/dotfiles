@@ -123,6 +123,7 @@ in
       cassandra
       customPkgs.docker-desktop
       element-desktop
+      gimp
       gnupg
       customPkgs.google-chrome
       intelPkgs.graalvm11-ce
