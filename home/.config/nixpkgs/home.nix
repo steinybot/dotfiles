@@ -320,6 +320,9 @@ in
         enable = true;
         plugins = [ "git" "thefuck" ];
       };
+      profileExtra = ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      '';
       shellAliases = shellAliases;
     };
   };
