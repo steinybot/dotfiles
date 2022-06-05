@@ -278,6 +278,9 @@ in
         difftool = {
           prompt = false;
         };
+        init = {
+          defaultBranch = "main";
+        };
         merge = {
           ff = false;
         };
