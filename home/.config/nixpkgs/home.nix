@@ -94,11 +94,11 @@ let
       ];
   };
 
-  customPkgsRepo = fetchGit {
-    url = "https://github.com/steinybot/nixpkgs.git";
-    ref = "dev";
-  };
-  customPkgs = import customPkgsRepo {};
+#  customPkgsRepo = fetchGit {
+#    url = "https://github.com/steinybot/nixpkgs.git";
+#    ref = "dev";
+#  };
+#  customPkgs = import customPkgsRepo {};
 
   shellAliases = {
     nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
@@ -121,15 +121,10 @@ in
       ammonite
       unstablePkgs.bcompare
       cassandra
-      customPkgs.docker-desktop
       element-desktop
       gnupg
-      customPkgs.google-chrome
       intelPkgs.graalvm11-ce
-      customPkgs.jetbrains.idea-ultimate
       jq
-      customPkgs.pkgsCross.x86_64-darwin.keybase-gui
-      lastpass-cli
       maven
       mysql
       nodejs
@@ -140,17 +135,16 @@ in
       sbt
       scala
       slack
-      customPkgs.pkgsCross.x86_64-darwin.steam
       surfraw # This needs a browser such as w3m.
       thefuck
       w3m
       yarn
     ];
 
-    sessionPath = [
-      # Add Keybase to the PATH.
-      "${customPkgs.pkgsCross.x86_64-darwin.keybase-gui}/Applications/Keybase.app/Contents/SharedSupport/bin"
-    ];
+#    sessionPath = [
+#      # Add Keybase to the PATH.
+#      "${customPkgs.pkgsCross.x86_64-darwin.keybase-gui}/Applications/Keybase.app/Contents/SharedSupport/bin"
+#    ];
 
     sessionVariables = {
       EDITOR = "vim";

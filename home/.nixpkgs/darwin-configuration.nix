@@ -36,7 +36,14 @@ in
     brews = [
     ];
     casks = [
+      "docker"
+      "epic-games"
       "gimp"
+      "google-chrome"
+      "intellij-idea"
+      "keybase"
+      "lastpass"
+      "steam"
     ];
     cleanup = "zap";
     masApps = {
