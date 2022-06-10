@@ -44,6 +44,7 @@ in
       "keybase"
       "lastpass"
       "steam"
+      "vuze"
     ];
     cleanup = "zap";
     masApps = {
