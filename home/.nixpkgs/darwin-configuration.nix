@@ -44,6 +44,7 @@ in
       "keybase"
       "lastpass"
       "steam"
+      "vlc"
       "vuze"
     ];
     cleanup = "zap";
