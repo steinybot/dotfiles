@@ -36,6 +36,7 @@ in
     brews = [
     ];
     casks = [
+      "beyond-compare"
       "docker"
       "epic-games"
       "gimp"
