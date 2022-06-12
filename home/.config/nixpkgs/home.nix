@@ -274,6 +274,10 @@ in
         };
         difftool = {
           prompt = false;
+          "bc" = {
+            cmd = ["bc" "\"$LOCAL\"" "\"$REMOTE\""];
+            trustExitCode = true;
+          };
         };
         init = {
           defaultBranch = "main";
@@ -283,8 +287,10 @@ in
           tool = "bc";
         };
         mergetool = {
+          keepBackup = false;
           prompt = false;
           "bc" = {
+            cmd = ["bc" "\"$LOCAL\"" "\"$REMOTE\"" "\"$BASE\"" "\"$MERGED\""];
             trustExitCode = true;
           };
         };
