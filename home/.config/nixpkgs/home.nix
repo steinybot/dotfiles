@@ -270,12 +270,12 @@ in
           autocrlf = false;
         };
         diff = {
-          tool = "bc";
+          tool = "bcomp";
         };
         difftool = {
           prompt = false;
-          "bc" = {
-            cmd = ''bc "$LOCAL" "$REMOTE"'';
+          "bcomp" = {
+            cmd = ''bcomp "$LOCAL" "$REMOTE"'';
             trustExitCode = true;
           };
         };
@@ -284,13 +284,13 @@ in
         };
         merge = {
           ff = false;
-          tool = "bc";
+          tool = "bcomp";
         };
         mergetool = {
           keepBackup = false;
           prompt = false;
-          "bc" = {
-            cmd = ''bc "$LOCAL" "$REMOTE" "$BASE" "$MERGED"'';
+          "bcomp" = {
+            cmd = ''bcomp "$LOCAL" "$REMOTE" "$BASE" "$MERGED"'';
             trustExitCode = true;
           };
         };
