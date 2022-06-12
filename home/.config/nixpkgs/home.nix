@@ -275,7 +275,7 @@ in
         difftool = {
           prompt = false;
           "bc" = {
-            cmd = ["bc" "\"$LOCAL\"" "\"$REMOTE\""];
+            cmd = "\"bc\" \"\\\"$LOCAL\\\"\" \"\\\"$REMOTE\\\"";
             trustExitCode = true;
           };
         };
@@ -290,7 +290,7 @@ in
           keepBackup = false;
           prompt = false;
           "bc" = {
-            cmd = ["bc" "\"$LOCAL\"" "\"$REMOTE\"" "\"$BASE\"" "\"$MERGED\""];
+            cmd = "\"bc\" \"\\\"$LOCAL\\\"\" \"\\\"$REMOTE\\\"\" \"\\\"$BASE\\\"\" \"\\\"$MERGED\\\"\"";
             trustExitCode = true;
           };
         };
