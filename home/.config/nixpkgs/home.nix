@@ -269,6 +269,9 @@ in
         core = {
           autocrlf = false;
         };
+        diff = {
+          tool = "bc";
+        };
         difftool = {
           prompt = false;
         };
@@ -277,9 +280,13 @@ in
         };
         merge = {
           ff = false;
+          tool = "bc";
         };
         mergetool = {
           prompt = false;
+          "bc" = {
+            trustExitCode = true;
+          };
         };
         pull = {
           ff = "only";
