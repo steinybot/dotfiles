@@ -37,6 +37,7 @@ in
     ];
     casks = [
       "beyond-compare"
+      "discord"
       "docker"
       "epic-games"
       "gimp"
