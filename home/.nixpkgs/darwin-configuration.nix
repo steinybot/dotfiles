@@ -37,7 +37,6 @@ in
     ];
     casks = [
       "beyond-compare"
-      "crossover"
       "discord"
       "docker"
       "epic-games"
@@ -46,6 +45,7 @@ in
       "intellij-idea"
       "keybase"
       "lastpass"
+      "parallels"
       "steam"
       "vlc"
       "vuze"
