@@ -37,6 +37,7 @@ in
     ];
     casks = [
       "beyond-compare"
+      "crossover"
       "discord"
       "docker"
       "epic-games"
