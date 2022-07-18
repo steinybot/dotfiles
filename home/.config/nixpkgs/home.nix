@@ -264,7 +264,9 @@ in
       userEmail = "jasonpickensnz@gmail.com";
       extraConfig = {
         branch = {
-          autoSetupMerge = "simple";
+          # FIXME: This fails with "fatal: bad boolean config value 'simple' for 'branch.autosetupmerge'"
+          #autoSetupMerge = "simple";
+          autoSetupMerge = true;
         };
         core = {
           autocrlf = false;
