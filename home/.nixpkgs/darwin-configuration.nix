@@ -50,6 +50,7 @@ in
       "steam"
       "vlc"
       "vuze"
+      "webstorm"
     ];
     cleanup = "zap";
     masApps = {
