@@ -264,7 +264,7 @@ in
       userEmail = "jasonpickensnz@gmail.com";
       extraConfig = {
         branch = {
-          autoSetupMerge = false;
+          autoSetupMerge = "simple";
         };
         core = {
           autocrlf = false;
