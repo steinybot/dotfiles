@@ -44,6 +44,7 @@ in
       "gimp"
       "google-chrome"
       "intellij-idea"
+      "jmc"
       "keybase"
       "lastpass"
       "parallels"
