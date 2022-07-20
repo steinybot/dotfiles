@@ -49,6 +49,7 @@ in
       "lastpass"
       "parallels"
       "steam"
+      "visualvm"
       "vlc"
       "vuze"
       "webstorm"
