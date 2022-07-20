@@ -41,6 +41,7 @@ in
       "discord"
       "docker"
       "epic-games"
+      "firefox"
       "gimp"
       "google-chrome"
       "intellij-idea"
