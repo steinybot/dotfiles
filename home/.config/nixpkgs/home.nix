@@ -264,9 +264,9 @@ in
       userEmail = "jasonpickensnz@gmail.com";
       extraConfig = {
         branch = {
-          # FIXME: This needs git 2.37
-          #autoSetupMerge = "simple";
-          autoSetupMerge = false;
+          # This needs git 2.37
+          autoSetupMerge = "simple";
+          #autoSetupMerge = false;
         };
         core = {
           autocrlf = false;
