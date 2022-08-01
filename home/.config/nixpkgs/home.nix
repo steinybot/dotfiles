@@ -264,9 +264,9 @@ in
       userEmail = "jasonpickensnz@gmail.com";
       extraConfig = {
         branch = {
-          # FIXME: This fails with "fatal: bad boolean config value 'simple' for 'branch.autosetupmerge'"
+          # FIXME: This needs git 2.37
           #autoSetupMerge = "simple";
-          autoSetupMerge = true;
+          autoSetupMerge = false;
         };
         core = {
           autocrlf = false;

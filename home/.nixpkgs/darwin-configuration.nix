@@ -35,6 +35,7 @@ in
     autoUpdate = true;
     brews = [
       "jenv"
+      "git"
     ];
     casks = [
       "beyond-compare"
