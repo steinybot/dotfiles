@@ -299,6 +299,10 @@ in
         pull = {
           ff = "only";
         };
+        push = {
+          autoSetupRemote = true;
+          default = "simple";
+        };
         url = {
           "ssh://git@github.com" = {
             insteadOf = "https://github.com";
