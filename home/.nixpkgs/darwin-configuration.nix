@@ -37,6 +37,7 @@ in
       "coursier"
       "git"
       "jenv"
+      "node"
     ];
     casks = [
       "beyond-compare"

@@ -127,8 +127,6 @@ in
       jq
       maven
       mysql
-      nodejs
-      nodePackages.npm
       pinentry_mac
       unstablePkgs.postman
       ripgrep
