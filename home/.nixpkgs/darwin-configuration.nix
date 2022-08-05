@@ -34,6 +34,7 @@ in
 
     autoUpdate = true;
     brews = [
+      "coursier"
       "jenv"
       "git"
     ];
