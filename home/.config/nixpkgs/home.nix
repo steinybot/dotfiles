@@ -265,8 +265,8 @@ in
       extraConfig = {
         branch = {
           # This needs git 2.37
-          autoSetupMerge = "simple";
-          #autoSetupMerge = false;
+          #autoSetupMerge = "simple";
+          autoSetupMerge = false;
         };
         core = {
           autocrlf = false;
