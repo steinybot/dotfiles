@@ -235,6 +235,7 @@ in
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
         PATH = "''${PATH}:~/Library/Application Support/Coursier/bin"
+        export PATH
       '';
       shellAliases = shellAliases;
     };
@@ -340,7 +341,8 @@ in
       };
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
-        PATH = "''${PATH}:~/Library/Application Support/Coursier/bin"
+        PATH+="~/Library/Application Support/Coursier/bin"
+        export PATH
       '';
       shellAliases = shellAliases;
     };
