@@ -341,7 +341,7 @@ in
       };
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
-        PATH+="~/Library/Application Support/Coursier/bin"
+        path+="~/Library/Application Support/Coursier/bin"
         export PATH
       '';
       shellAliases = shellAliases;
