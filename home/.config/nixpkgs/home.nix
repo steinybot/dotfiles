@@ -232,6 +232,10 @@ in
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.bash
       '';
+      profileExtra = ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+        PATH = "''${PATH}:~/Library/Application Support/Coursier/bin"
+      '';
       shellAliases = shellAliases;
     };
 
@@ -336,6 +340,7 @@ in
       };
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
+        PATH = "''${PATH}:~/Library/Application Support/Coursier/bin"
       '';
       shellAliases = shellAliases;
     };
