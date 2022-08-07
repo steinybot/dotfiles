@@ -139,10 +139,11 @@ in
       yarn
     ];
 
-#    sessionPath = [
-#      # Add Keybase to the PATH.
-#      "${customPkgs.pkgsCross.x86_64-darwin.keybase-gui}/Applications/Keybase.app/Contents/SharedSupport/bin"
-#    ];
+    sessionPath = [
+      # Add Keybase to the PATH.
+      #"${customPkgs.pkgsCross.x86_64-darwin.keybase-gui}/Applications/Keybase.app/Contents/SharedSupport/bin"
+      "${homeDirectory}/Library/Application Support/Coursier/bin"
+    ];
 
     sessionVariables = {
       EDITOR = "vim";
@@ -234,8 +235,6 @@ in
       '';
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
-        PATH = "''${PATH}:~/Library/Application Support/Coursier/bin"
-        export PATH
       '';
       shellAliases = shellAliases;
     };
@@ -341,8 +340,6 @@ in
       };
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
-        path+="~/Library/Application Support/Coursier/bin"
-        export PATH
       '';
       shellAliases = shellAliases;
     };
