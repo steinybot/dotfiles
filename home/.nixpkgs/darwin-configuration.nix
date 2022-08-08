@@ -41,6 +41,7 @@ in
     ];
     casks = [
       "beyond-compare"
+      "blender"
       "discord"
       "docker"
       "epic-games"
