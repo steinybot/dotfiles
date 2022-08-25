@@ -16,7 +16,7 @@ let
     # FIXME: This is not true.
     # GUI applications have to be installed with Nix Darwin and not Home Manager otherwise they
     # do not work with Spotlight etc. See https://github.com/nix-community/home-manager/issues/1341.
-    iterm2
+    #iterm2
   ];
 in
 {
@@ -49,6 +49,7 @@ in
       "gimp"
       "google-chrome"
       "intellij-idea"
+      "iterm2"
       "jdk-mission-control"
       "keybase"
       "lastpass"
