@@ -72,6 +72,9 @@ in
 #    masApps = {
 #      Xcode = 497799835;
 #    };
+    taps = [
+      "nodenv/nodenv"
+    ];
   };
 
   networking = {
