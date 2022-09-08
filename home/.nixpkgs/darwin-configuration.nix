@@ -37,6 +37,8 @@ in
       "git"
       "jenv"
       "node"
+      "nodenv"
+      "node-build"
     ];
     casks = [
       "beyond-compare"
