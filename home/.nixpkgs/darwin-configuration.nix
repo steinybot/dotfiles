@@ -32,7 +32,6 @@ in
   homebrew = {
     enable = true;
 
-    autoUpdate = true;
     brews = [
       "coursier"
       "git"
@@ -62,7 +61,11 @@ in
       "vuze"
       "webstorm"
     ];
-    cleanup = "zap";
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
+    };
 #    masApps = {
 #      Xcode = 497799835;
 #    };
