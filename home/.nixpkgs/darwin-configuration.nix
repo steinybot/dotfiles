@@ -38,6 +38,7 @@ in
       "jenv"
       "node"
       "nodenv"
+      "nodenv/nodenv/nodenv-default-packages"
       "node-build"
     ];
     casks = [

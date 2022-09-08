@@ -235,6 +235,8 @@ in
       '';
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
+
+        eval "$(nodenv init -)"
       '';
       shellAliases = shellAliases;
     };
@@ -340,6 +342,8 @@ in
       };
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
+
+        eval "$(nodenv init -)"
       '';
       shellAliases = shellAliases;
     };
