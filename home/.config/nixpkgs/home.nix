@@ -132,7 +132,6 @@ in
       ripgrep
       sbt
       scala
-      slack
       surfraw # This needs a browser such as w3m.
       thefuck
       w3m

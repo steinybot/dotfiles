@@ -57,6 +57,7 @@ in
       "lastpass"
       "parallels"
       "pomodone"
+      "slack"
       "steam"
       "todoist"
       "visualvm"
