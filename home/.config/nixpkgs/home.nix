@@ -229,13 +229,19 @@ in
   programs = {
     bash = {
       enable = true;
+      # These go in ~/.bashrc.
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.bash
       '';
+      # These go in ~/.profile.
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
         eval "$(nodenv init -)"
+
+        export PYENV_ROOT="$HOME/.pyenv"
+        command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init -)"
       '';
       shellAliases = shellAliases;
     };
@@ -332,6 +338,7 @@ in
 
     zsh = {
       enable = true;
+      # These go in ~/.zshrc.
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.zsh
       '';
@@ -339,10 +346,15 @@ in
         enable = true;
         plugins = [ "git" "thefuck" ];
       };
+      # These go in ~/.zprofile.
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
         eval "$(nodenv init -)"
+
+        export PYENV_ROOT="$HOME/.pyenv"
+        command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init -)"
       '';
       shellAliases = shellAliases;
     };
