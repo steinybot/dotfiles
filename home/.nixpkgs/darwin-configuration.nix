@@ -40,6 +40,7 @@ in
       "nodenv"
       "nodenv/nodenv/nodenv-default-packages"
       "node-build"
+      "python"
     ];
     casks = [
       "beyond-compare"
