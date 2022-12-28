@@ -33,6 +33,7 @@ in
     enable = true;
 
     brews = [
+      "awscli"
       "coursier"
       "git"
       "jenv"
