@@ -41,6 +41,7 @@ in
       "nodenv/nodenv/nodenv-default-packages"
       "node-build"
       "pyenv"
+      "tfenv"
     ];
     casks = [
       "beyond-compare"
