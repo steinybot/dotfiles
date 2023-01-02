@@ -42,6 +42,7 @@ in
       "nodenv"
       "nodenv/nodenv/nodenv-default-packages"
       "node-build"
+      "pulumi"
       "pyenv"
       "tfenv"
     ];
