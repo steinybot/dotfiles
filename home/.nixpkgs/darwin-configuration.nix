@@ -37,6 +37,7 @@ in
       "coursier"
       "git"
       "jenv"
+      "jq"
       "node"
       "nodenv"
       "nodenv/nodenv/nodenv-default-packages"
