@@ -334,6 +334,8 @@ in
       enable = true;
       extraOptionOverrides = {
         IgnoreUnknown = "UseKeychain";
+        # This will start the gpg agent when using SSH.
+        Match = "host * exec \"gpg-connect-agent UPDATESTARTUPTTY /bye\"";
         UseKeychain = "yes";
       };
     };

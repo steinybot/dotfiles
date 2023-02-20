@@ -118,12 +118,8 @@ in
       enable = true;
     };
 
-    gnupg.agent = {
-      enable = true;
-      # This doesn't work properly. It needs to be done in home manager instead.
-      # See: https://discourse.nixos.org/t/how-to-make-gpg-use-the-agent-from-programs-gnupg-agent/11834
-      #enableSSHSupport = true;
-    };
+    # Don't use the gnupg agent that is provided here as it doesn't work properly. Set it up using home-manager instead.
+    # See: https://discourse.nixos.org/t/how-to-make-gpg-use-the-agent-from-programs-gnupg-agent/11834
 
     # Create /etc/zshrc that loads the nix-darwin environment.
     zsh = {
