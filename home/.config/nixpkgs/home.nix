@@ -16,6 +16,8 @@ let
     url = "https://github.com/steinybot/dotfiles.git";
     ref = "main";
   };
+  # Use this if git/ssh is broken (such as when the PGP key expires).
+  #dotFilesRepo = ../../..;
   repoHomeFilesDirectory = "${dotFilesRepo}/home";
 
   # Add these manually so that we can specify custom onChange etc.
