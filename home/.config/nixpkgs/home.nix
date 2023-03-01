@@ -121,7 +121,6 @@ in
     # Install packages.
     packages = with pkgs; [
       ammonite
-      unstablePkgs.bcompare
       cassandra
       element-desktop
       gnupg
