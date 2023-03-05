@@ -35,6 +35,7 @@ in
     brews = [
       "act"
       "awscli"
+      "colima"
       "coursier"
       "git"
       "jenv"
