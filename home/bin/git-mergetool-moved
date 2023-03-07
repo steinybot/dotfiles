@@ -36,7 +36,8 @@ original_basename="$(basename "${original}")"
 theirs="${temp_dir}/${original_basename}_THEIRS"
 git show "${branch}:${original}" > "${theirs}"
 
-merge_base="$(git merge-base "${branch}" HEAD)"
+# See https://stackoverflow.com/a/75229728/367796
+merge_base="$(git rev-parse "$(git rev-list HEAD ^"${branch}" | tail -n 1)^")"
 base="${temp_dir}/${original_basename}_BASE"
 git show "${merge_base}:${original}" > "${base}"
 
