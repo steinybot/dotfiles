@@ -47,6 +47,7 @@ in
       "pulumi"
       "pyenv"
       "tfenv"
+      "xml-coreutils"
     ];
     casks = [
       "beyond-compare"
