@@ -38,6 +38,7 @@ in
       "colima"
       "coursier"
       "git"
+      "graphviz"
       "jenv"
       "jq"
       "node"

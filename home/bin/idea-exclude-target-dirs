@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+for module in .idea/modules/*.iml; do
+  file="$(basename "${module}")"
+  filename="${file%.*}"
+#  echo "${filename}"
+
+  xml-cut -t 3 "${module}" ':/module/component/content' \
+  | xml-find ':/root/content' -exec echo '{@}' \; \
+  | grep '^url ' \
+  | sed 's/url \(.*\)/[module\/component\/content\/excludeFolder@url=\1\/target]/'
+done
+
+# jason@goodness> xml-cut -t 3 .idea/modules/client.iml ':/module/component/content' \
+#   | xml-find ':/root/content' -exec echo '{@}' \; \
+#   | grep '^url '
+#url file://$MODULE_DIR$/../../client
+
+# xml-echo -e '[root/component/content/excludeFolder@url=file::\/\/$MODULE_DIR$\/..\/..\/client\/target]' | xml-cat client.iml
+
+
+#
