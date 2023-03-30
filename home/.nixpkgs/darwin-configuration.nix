@@ -53,7 +53,8 @@ in
     ];
     casks = [
       "beyond-compare"
-      "blender"
+      # The download for this is bombing.
+      #"blender"
       "discord"
       "docker"
       "epic-games"
