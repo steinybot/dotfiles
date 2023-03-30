@@ -105,7 +105,7 @@ in
       keep-derivations = true
 
       # Include GitHub personal access token (classic) that has the repo scope.
-      !include ''${HOME}''/.config/nix/secrets.conf
+      !include ''${HOME}/.config/nix/secrets.conf
     '';
 
     nixPath = [
