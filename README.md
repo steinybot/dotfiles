@@ -50,6 +50,16 @@ The recommended way to run this is via [bootstrap].
 
 ### Manual Setup
 
+#### GitHub Personal Access Token
+
+1. Create a GitHub [Personal Access Token (classic)] with the scope `repo`
+2. Add the token to `~/.config/nix/secrets.conf`:
+   ```
+   access-tokens = github.com=<access_token>
+   ```
+
+#### Run Home Manager
+
 Run `home-manager` with the `home.nix` configuration.
 
 For example:
@@ -100,3 +110,4 @@ home-update-local
 [bootstrap]: https://github.com/steinybot/bootstrap
 [home.nix]: home/.config/nixpkgs/home.nix
 [home manager]: https://github.com/nix-community/home-manager
+[personal access token (classic)]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic
