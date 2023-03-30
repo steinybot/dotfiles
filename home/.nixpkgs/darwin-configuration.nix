@@ -37,6 +37,7 @@ in
       "awscli"
       "colima"
       "coursier"
+      "gh"
       "git"
       "graphviz"
       "jenv"
