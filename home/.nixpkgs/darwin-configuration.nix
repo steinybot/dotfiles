@@ -105,9 +105,6 @@ in
       # Prevent nix-shell stuff from being garbage collected (for nix-direnv).
       keep-outputs = true
       keep-derivations = true
-
-      # Include GitHub personal access token (classic) that has the repo scope.
-      !include ''${HOME}/.config/nix/secrets.conf
     '';
 
     nixPath = [
