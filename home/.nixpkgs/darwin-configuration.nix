@@ -98,7 +98,7 @@ in
   nix = {
     extraOptions = ''
       # With Rosetta 2 we can run Intell apps on Apple M1.
-      extra-platforms = x86_64-darwin aarch64-darwin
+      extra-platforms = x86_64-darwin
 
       experimental-features = nix-command flakes
 
