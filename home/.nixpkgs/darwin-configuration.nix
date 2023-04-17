@@ -68,6 +68,7 @@ in
       "lastpass"
       "parallels"
       "pomodone"
+      "postman"
       "raycast"
       "slack"
       "steam"
