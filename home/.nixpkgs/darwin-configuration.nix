@@ -52,6 +52,7 @@ in
       "xml-coreutils"
     ];
     casks = [
+      "aws-vault"
       "beyond-compare"
       # The download for this is bombing.
       #"blender"
