@@ -48,6 +48,7 @@ in
       "node-build"
       "pulumi"
       "pyenv"
+      "rustup"
       "tfenv"
       "xml-coreutils"
     ];
