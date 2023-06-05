@@ -144,6 +144,7 @@ in
       #"${customPkgs.pkgsCross.x86_64-darwin.keybase-gui}/Applications/Keybase.app/Contents/SharedSupport/bin"
       "${homeDirectory}/Library/Application Support/Coursier/bin"
       "${homeDirectory}/bin"
+      "${homeDirectory}/.cargo/bin"
     ];
 
     sessionVariables = {
