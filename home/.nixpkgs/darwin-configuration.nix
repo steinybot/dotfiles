@@ -71,6 +71,7 @@ in
       "parallels"
       "pomodone"
       "postman"
+      "protonvpn"
       "raycast"
       "slack"
       "steam"
