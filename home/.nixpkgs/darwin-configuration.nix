@@ -55,8 +55,7 @@ in
     casks = [
       "aws-vault"
       "beyond-compare"
-      # The download for this is bombing.
-      #"blender"
+      "blender"
       "discord"
       "docker"
       "epic-games"
