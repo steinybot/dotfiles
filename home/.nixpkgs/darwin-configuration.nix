@@ -55,6 +55,11 @@ in
     casks = [
       "aws-vault"
       "beyond-compare"
+      # This often times out trying to download.
+      # You might need to download it manually and run:
+      # brew --cache --build-from-source blender
+      # to get the path to where it needs to go.
+      # See https://docs.brew.sh/Tips-N'-Tricks#pre-download-a-file-for-a-formula
       "blender"
       "discord"
       "docker"
