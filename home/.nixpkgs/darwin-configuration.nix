@@ -40,6 +40,7 @@ in
       "gh"
       "git"
       "graphviz"
+      "jackett"
       "jenv"
       "jq"
       "node"
