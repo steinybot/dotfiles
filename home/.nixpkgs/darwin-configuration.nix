@@ -64,6 +64,7 @@ in
       "brave-browser"
       "discord"
       "docker"
+      "elmedia-player"
       "epic-games"
       "firefox"
       "gimp"
