@@ -77,6 +77,7 @@ in
       "pomodone"
       "postman"
       "protonvpn"
+      "qbittorrent"
       "raycast"
       "slack"
       "steam"
