@@ -61,6 +61,7 @@ in
       # to get the path to where it needs to go.
       # See https://docs.brew.sh/Tips-N'-Tricks#pre-download-a-file-for-a-formula
       "blender"
+      "brave-browser"
       "discord"
       "docker"
       "epic-games"
