@@ -67,6 +67,7 @@ in
       "docker"
       "epic-games"
       "firefox"
+      "freecad"
       "gimp"
       "google-chrome"
       "intellij-idea"
