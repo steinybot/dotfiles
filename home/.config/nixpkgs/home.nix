@@ -106,7 +106,7 @@ let
     nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
     home-update = "home-manager --option tarball-ttl 0 switch";
     home-update-local = "home-manager -f '${dotfilesSrcDirectory}/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
-    rm = "safe-rm"
+    rm = "safe-rm";
   };
 in
 {
