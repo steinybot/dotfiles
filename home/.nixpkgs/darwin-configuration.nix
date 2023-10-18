@@ -50,6 +50,7 @@ in
       "pulumi"
       "pyenv"
       "rustup"
+      "safe-rm"
       "tfenv"
       "xml-coreutils"
     ];
