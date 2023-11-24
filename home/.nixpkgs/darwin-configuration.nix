@@ -35,6 +35,7 @@ in
     brews = [
       "act"
       "awscli"
+      "bun"
       "colima"
       "coursier"
       "gh"
@@ -101,6 +102,7 @@ in
 #    };
     taps = [
       "nodenv/nodenv"
+      "oven-sh/bun"
     ];
   };
 
