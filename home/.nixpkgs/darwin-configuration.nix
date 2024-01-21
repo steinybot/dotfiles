@@ -38,6 +38,7 @@ in
       "bun"
       "colima"
       "coursier"
+      "coreutils"
       "gh"
       "git"
       "graphviz"
