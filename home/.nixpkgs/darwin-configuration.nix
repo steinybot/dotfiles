@@ -42,6 +42,7 @@ in
       "gh"
       "git"
       "graphviz"
+      "hyperfine"
       "jackett"
       "jenv"
       "jq"
