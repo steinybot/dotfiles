@@ -236,6 +236,10 @@ in
       # These go in ~/.bashrc.
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.bash
+
+        #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+        export SDKMAN_DIR="$HOME/.sdkman"
+        [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
       '';
       # These go in ~/.profile.
       profileExtra = ''
@@ -347,6 +351,10 @@ in
       # These go in ~/.zshrc.
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.zsh
+
+        #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+        export SDKMAN_DIR="$HOME/.sdkman"
+        [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
       '';
       oh-my-zsh = {
         enable = true;
