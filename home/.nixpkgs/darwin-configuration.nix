@@ -54,6 +54,7 @@ in
       "pyenv"
       "rustup"
       "safe-rm"
+      "sbt"
       "tfenv"
       "xml-coreutils"
     ];
