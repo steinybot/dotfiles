@@ -122,7 +122,6 @@ in
     # Install packages.
     packages = with pkgs; [
       ammonite
-#      cassandra
       element-desktop
       gnupg
 #      intelPkgs.graalvm11-ce
@@ -169,22 +168,6 @@ in
   };
 
   launchd.agents = {
-    gcCassandra = {
-      enable = true;
-      config = {
-        EnvironmentVariables = {
-          MAX_HEAP_SIZE = "4G";
-          HEAP_NEWSIZE = "800M";
-          CASSANDRA_LOG_DIR = "${goodcoverCoreDirectory}/datadir/cassandra/logs";
-        };
-        Label = "com.goodcover.cassandra";
-        ProgramArguments = [
-          "${pkgs.cassandra}/bin/cassandra"
-          "-f"
-          "-Dcassandra.config=file://${homeDirectory}/.config/goodcover/cassandra.yaml"
-        ];
-      };
-    };
     gcMySQL = {
       enable = true;
       config = {
@@ -207,25 +190,6 @@ in
             ${(old.postInstall or "")}
 
             ln $out/Applications/BCompare.app/Contents/MacOS/bcomp bin/bcomp
-          '';
-      });
-      cassandra = super.cassandra.overrideAttrs (old: {
-        # Workaround for https://github.com/NixOS/nixpkgs/issues/165175.
-        patches = (old.patches or []) ++
-          builtins.map
-            (name: "${patchesDirectory}/cassandra/${name}")
-            (builtins.attrNames (builtins.readDir "${patchesDirectory}/cassandra"));
-        postInstall =
-          let
-            jna = pkgs.fetchurl {
-              url = "https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.10.0/jna-5.10.0.jar";
-              sha256 = "sha256-4zXBBnn3QyB9gixfeUjpMDGYNUkldanbprlPijuW/Mg=";
-            };
-          in ''
-            ${(old.postInstall or "")}
-
-            rm "$out/lib/jna-4.2.2.jar"
-            cp "${jna}" "$out/lib/"
           '';
       });
     })
