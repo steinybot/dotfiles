@@ -53,9 +53,9 @@ let
       '';
     };
 
-    "Library/Java/JavaVirtualMachines/graalvm11-ce" = {
-      source = toString intelPkgs.graalvm11-ce;
-    };
+#    "Library/Java/JavaVirtualMachines/graalvm11-ce" = {
+#      source = toString intelPkgs.graalvm11-ce;
+#    };
   };
   managedHomeFileNames = builtins.attrNames managedHomeFiles;
 
@@ -125,7 +125,8 @@ in
       cassandra
       element-desktop
       gnupg
-      intelPkgs.graalvm11-ce
+#      intelPkgs.graalvm11-ce
+      graalvm-ce
       jq
       maven
       mysql
