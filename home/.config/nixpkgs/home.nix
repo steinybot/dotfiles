@@ -122,7 +122,7 @@ in
     # Install packages.
     packages = with pkgs; [
       ammonite
-      cassandra
+#      cassandra
       element-desktop
       gnupg
 #      intelPkgs.graalvm11-ce
