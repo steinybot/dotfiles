@@ -131,7 +131,7 @@ in
       maven
       mysql
       pinentry_mac
-      postman
+#      postman
       ripgrep
       sbt
       scala
