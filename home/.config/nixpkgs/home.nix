@@ -132,7 +132,7 @@ in
       pinentry_mac
       postman
       ripgrep
-      #sbt
+      sbt
       scala
       surfraw # This needs a browser such as w3m.
       thefuck
