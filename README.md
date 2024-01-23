@@ -67,7 +67,7 @@ For example:
 
 ```shell
 home_nix="$(mktemp -t home.nix)"
-curl -L -o "${home_nix}" 'https://raw.githubusercontent.com/steinybot/dotfiles/main/.config/nixpkgs/home.nix'
+curl -L -o "${home_nix}" 'https://raw.githubusercontent.com/steinybot/dotfiles/main/.config/home-manager/home.nix'
 home-manager -f "${home_nix}" switch
 ```
 
@@ -110,6 +110,6 @@ home-update-local
 
 [bootstrap]: https://github.com/steinybot/bootstrap
 [goodcover settings]: https://github.com/goodcover/gc-nix#add-settings-to-use-our-cache
-[home.nix]: home/.config/nixpkgs/home.nix
+[home.nix]: home/.config/home-manager/home.nix
 [home manager]: https://github.com/nix-community/home-manager
 [personal access token (classic)]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic

@@ -23,8 +23,8 @@ let
   # Add these manually so that we can specify custom onChange etc.
   managedHomeFiles = {
     # This may update itself so we might need to run again.
-    ".config/nixpkgs/home.nix" = {
-      source = "${repoHomeFilesDirectory}/.config/nixpkgs/home.nix";
+    ".config/home-manager/home.nix" = {
+      source = "${repoHomeFilesDirectory}/.config/home-manager/home.nix";
       onChange = "home-manager --option tarball-ttl 0 -b backup switch";
     };
 
@@ -105,7 +105,7 @@ let
   shellAliases = {
     nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
     home-update = "home-manager --option tarball-ttl 0 switch";
-    home-update-local = "home-manager -f '${dotfilesSrcDirectory}/home/.config/nixpkgs/home.nix' --option tarball-ttl 0 switch";
+    home-update-local = "home-manager -f '${dotfilesSrcDirectory}/home/.config/home-manager/home.nix' --option tarball-ttl 0 switch";
     rm = "safe-rm";
   };
 in
