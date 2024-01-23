@@ -124,13 +124,10 @@ in
       ammonite
       element-desktop
       gnupg
-#      intelPkgs.graalvm11-ce
       graalvm-ce
       jq
       maven
-      mysql
       pinentry_mac
-#      postman
       ripgrep
       sbt
       scala
@@ -168,18 +165,6 @@ in
   };
 
   launchd.agents = {
-    gcMySQL = {
-      enable = true;
-      config = {
-        Label = "com.goodcover.mysql";
-        ProgramArguments = [
-          "${pkgs.mysql}/bin/mysqld_safe"
-          "--datadir=${goodcoverCoreDirectory}/datadir/mysql"
-          "--log-error=${goodcoverCoreDirectory}/datadir/mysql/mysql.err"
-          "--socket=${goodcoverCoreDirectory}/datadir/mysql.sock"
-        ];
-      };
-    };
   };
 
   nixpkgs.overlays = [
