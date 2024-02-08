@@ -55,6 +55,7 @@ in
       "rustup"
       "safe-rm"
       "tfenv"
+      "watchman"
       "xml-coreutils"
     ];
     casks = [
