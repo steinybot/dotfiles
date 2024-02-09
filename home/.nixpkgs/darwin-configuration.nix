@@ -69,6 +69,7 @@ in
       "blender"
       "brave-browser"
       "discord"
+      "disk-inventory-x"
       "docker"
       "epic-games"
       "firefox"
