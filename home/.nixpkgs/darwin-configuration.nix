@@ -58,6 +58,7 @@ in
       "tfenv"
       "watchman"
       "xml-coreutils"
+      "zabbix"
     ];
     casks = [
       "aws-vault"
