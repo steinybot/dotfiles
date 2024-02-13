@@ -50,6 +50,7 @@ in
       "nodenv"
       "nodenv/nodenv/nodenv-default-packages"
       "node-build"
+      "pandoc"
       "pulumi"
       "pyenv"
       "rustup"
