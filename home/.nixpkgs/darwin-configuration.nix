@@ -97,6 +97,7 @@ in
       "vlc"
       "vuze"
       "webstorm"
+      "wireshark"
     ];
     onActivation = {
       autoUpdate = true;
