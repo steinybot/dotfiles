@@ -97,6 +97,7 @@ in
       "vlc"
       "vuze"
       "webstorm"
+      "whatsapp"
       "wireshark"
     ];
     onActivation = {
