@@ -93,6 +93,7 @@ in
       "steam"
       "todoist"
       "universal-media-server"
+      "visual-studio-code"
       "visualvm"
       "vlc"
       "vuze"
