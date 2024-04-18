@@ -112,6 +112,7 @@ in
 #      Xcode = 497799835;
 #    };
     taps = [
+      "homebrew/services"
       "nodenv/nodenv"
       "oven-sh/bun"
     ];
