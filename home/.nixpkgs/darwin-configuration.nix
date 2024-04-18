@@ -46,6 +46,7 @@ in
       "jackett"
       "jenv"
       "jq"
+      "mpv"
       "node"
       "nodenv"
       "nodenv/nodenv/nodenv-default-packages"
