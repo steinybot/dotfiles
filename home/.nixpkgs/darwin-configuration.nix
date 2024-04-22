@@ -43,6 +43,7 @@ in
       "git"
       "go@1.21"
       "gofumpt"
+      "golangci-lint"
       "graphviz"
       "hyperfine"
       "jackett"
@@ -55,6 +56,7 @@ in
       "node-build"
       "pandoc"
       "pulumi"
+      "pulumictl"
       "pyenv"
       "rustup"
       "safe-rm"
@@ -114,11 +116,10 @@ in
 #      Xcode = 497799835;
 #    };
     taps = [
-      "golangci/tap/golangci-lint"
       "homebrew/services"
       "nodenv/nodenv"
       "oven-sh/bun"
-      "pulumi/tap/pulumictl"
+      "pulumi/tap"
     ];
   };
 
