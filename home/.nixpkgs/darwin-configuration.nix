@@ -41,6 +41,8 @@ in
       "coreutils"
       "gh"
       "git"
+      "go@1.21"
+      "gofumpt"
       "graphviz"
       "hyperfine"
       "jackett"
@@ -112,9 +114,11 @@ in
 #      Xcode = 497799835;
 #    };
     taps = [
+      "golangci/tap/golangci-lint"
       "homebrew/services"
       "nodenv/nodenv"
       "oven-sh/bun"
+      "pulumi/tap/pulumictl"
     ];
   };
 
