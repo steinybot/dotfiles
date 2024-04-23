@@ -78,6 +78,7 @@ in
       "discord"
       "disk-inventory-x"
       "docker"
+      "dotnet-sdk"
       "epic-games"
       "firefox"
       "freecad"
