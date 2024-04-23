@@ -44,6 +44,7 @@ in
       "go@1.21"
       "gofumpt"
       "golangci-lint"
+      "gradle"
       "graphviz"
       "hyperfine"
       "jackett"
