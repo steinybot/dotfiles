@@ -62,6 +62,7 @@ in
       "rustup"
       "safe-rm"
       "tfenv"
+      "Virtuslab/scala-cli/scala-cli"
       "watchman"
       "xml-coreutils"
       "zabbix"
@@ -122,6 +123,7 @@ in
       "nodenv/nodenv"
       "oven-sh/bun"
       "pulumi/tap"
+      "virtuslab/scala-cli"
     ];
   };
 
