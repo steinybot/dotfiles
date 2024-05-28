@@ -129,7 +129,6 @@ in
       maven
       pinentry_mac
       ripgrep
-      sbt
       scala
       surfraw # This needs a browser such as w3m.
       thefuck

@@ -60,6 +60,7 @@ in
       "pulumictl"
       "pyenv"
       "rustup"
+      "sbt"
       "safe-rm"
       "tfenv"
       "Virtuslab/scala-cli/scala-cli"
