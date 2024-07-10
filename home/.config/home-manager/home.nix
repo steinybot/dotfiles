@@ -151,6 +151,8 @@ in
       # See https://discourse.nixos.org/t/how-to-make-gpg-use-the-agent-from-programs-gnupg-agent/11834.
       SSH_AUTH_SOCK = "$(gpgconf --list-dirs agent-ssh-socket)";
       VI_MODE_SET_CURSOR = "true";
+      VI_MODE_CURSOR_NORMAL = 4;
+      VI_MODE_CURSOR_VISUAL = 2;
     };
 
     # This value determines the Home Manager release that your
