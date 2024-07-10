@@ -311,6 +311,7 @@ in
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" "thefuck" "vi-mode" ];
+        theme = "dst";
       };
       # These go in ~/.zprofile.
       profileExtra = ''
