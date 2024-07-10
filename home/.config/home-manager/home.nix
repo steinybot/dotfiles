@@ -307,7 +307,7 @@ in
       '';
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "thefuck" ];
+        plugins = [ "git" "thefuck" "vi-mode" ];
       };
       # These go in ~/.zprofile.
       profileExtra = ''
