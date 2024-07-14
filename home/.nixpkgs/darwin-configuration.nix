@@ -109,6 +109,7 @@ in
       "vuze"
       "webstorm"
       "whatsapp"
+      "whisky"
       "wireshark"
     ];
     onActivation = {
