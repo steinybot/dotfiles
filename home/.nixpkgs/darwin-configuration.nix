@@ -36,7 +36,6 @@ in
       "act"
       "awscli"
       "bun"
-      "colima"
       "coursier"
       "coreutils"
       "gh"
