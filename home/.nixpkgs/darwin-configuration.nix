@@ -38,6 +38,7 @@ in
       "bun"
       "coursier"
       "coreutils"
+      "exercism"
       "gh"
       "git"
       "go@1.21"
