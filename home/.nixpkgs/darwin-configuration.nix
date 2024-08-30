@@ -50,7 +50,7 @@ in
       "jackett"
       "jenv"
       "jq"
-      "jupyterlab"
+      "miniforge"
       "mpv"
       "node"
       "nodenv"
