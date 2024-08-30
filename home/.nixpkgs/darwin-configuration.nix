@@ -50,6 +50,7 @@ in
       "jackett"
       "jenv"
       "jq"
+      "jupyterlab"
       "mpv"
       "node"
       "nodenv"
