@@ -189,6 +189,12 @@ in
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.bash
 
+        # >>> conda initialize >>>
+        if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+            source "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+        end
+        # <<< conda initialize <<<
+
         #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
         export SDKMAN_DIR="$HOME/.sdkman"
         [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -303,6 +309,12 @@ in
       # These go in ~/.zshrc.
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.zsh
+
+        # >>> conda initialize >>>
+        if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+            source "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+        end
+        # <<< conda initialize <<<
 
         #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
         export SDKMAN_DIR="$HOME/.sdkman"
