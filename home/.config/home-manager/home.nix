@@ -145,7 +145,7 @@ in
     ];
 
     sessionVariables = {
-      CONDA_EXE = "/opt/homebrew/bin/conda";
+      CONDA_EXE = "/opt/homebrew/Caskroom/miniforge/base/bin/conda";
       EDITOR = "vim";
       LPASS_PINENTRY = "${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac";
       # I don't know why we need this. Nix-darwin is supposed to manage the agent for us.
@@ -190,11 +190,11 @@ in
       initExtra = ''
         source ~/.config/iterm2/.iterm2_shell_integration.bash
 
-        # >>> conda initialize >>>
+        # >>> mamba initialize >>>
         if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
             . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
         fi
-        # <<< conda initialize <<<
+        # <<< mamba initialize <<<
 
         #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
         export SDKMAN_DIR="$HOME/.sdkman"
@@ -312,10 +312,25 @@ in
         source ~/.config/iterm2/.iterm2_shell_integration.zsh
 
         # >>> conda initialize >>>
+        # !! Contents within this block are managed by 'conda init' !!
+        __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+        if [ $? -eq 0 ]; then
+            eval "$__conda_setup"
+        else
+            if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+                . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+            else
+                export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+            fi
+        fi
+        unset __conda_setup
+        # <<< conda initialize <<<
+
+        # >>> mamba initialize >>>
         if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
             . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
         fi
-        # <<< conda initialize <<<
+        # <<< mamba initialize <<<
 
         #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
         export SDKMAN_DIR="$HOME/.sdkman"
