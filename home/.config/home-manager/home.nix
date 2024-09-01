@@ -190,9 +190,9 @@ in
         source ~/.config/iterm2/.iterm2_shell_integration.bash
 
         # >>> conda initialize >>>
-        if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
-            source "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
-        end
+        if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
+            . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+        fi
         # <<< conda initialize <<<
 
         #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -311,9 +311,9 @@ in
         source ~/.config/iterm2/.iterm2_shell_integration.zsh
 
         # >>> conda initialize >>>
-        if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
-            source "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
-        end
+        if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
+            . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+        fi
         # <<< conda initialize <<<
 
         #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
