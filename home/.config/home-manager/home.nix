@@ -145,6 +145,7 @@ in
     ];
 
     sessionVariables = {
+      CONDA_EXE = "/opt/homebrew/bin/conda";
       EDITOR = "vim";
       LPASS_PINENTRY = "${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac";
       # I don't know why we need this. Nix-darwin is supposed to manage the agent for us.
