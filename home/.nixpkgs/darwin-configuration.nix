@@ -50,6 +50,7 @@ in
       "jackett"
       "jenv"
       "jq"
+      "mill"
       "mpv"
       "node"
       "nodenv"
