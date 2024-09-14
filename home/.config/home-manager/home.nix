@@ -246,6 +246,7 @@ in
         };
         core = {
           autocrlf = false;
+          excludesfile = "~/.config/git/.gitignore";
         };
         diff = {
           tool = "bcomp";
