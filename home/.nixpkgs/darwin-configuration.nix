@@ -95,6 +95,7 @@ in
       "keepassx"
       "lastpass"
       "miniforge"
+      "paintbrush"
       "parallels"
       "postman"
       "protonvpn"
