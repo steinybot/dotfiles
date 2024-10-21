@@ -114,6 +114,7 @@ in
       "whatsapp"
       "whisky"
       "wireshark"
+      "zed
       "zoom"
     ];
     onActivation = {
