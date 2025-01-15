@@ -96,6 +96,7 @@ in
       "miniforge"
       "paintbrush"
       "parallels"
+      "podman-desktop"
       "postman"
       "protonvpn"
       "qbittorrent"
