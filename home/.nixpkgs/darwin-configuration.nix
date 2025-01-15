@@ -88,6 +88,7 @@ in
       "gimp"
       "google-chrome"
       "intellij-idea"
+      "intellij-idea-ce"
       "iterm2"
       "jdk-mission-control"
       "keybase"
