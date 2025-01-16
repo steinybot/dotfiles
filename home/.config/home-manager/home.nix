@@ -8,8 +8,6 @@ let
 
   srcDirectory = "${homeDirectory}/src";
   dotfilesSrcDirectory = "${srcDirectory}/dotfiles";
-  goodcoverSrcDirectory = "${srcDirectory}/goodcover";
-  goodcoverCoreDirectory = "${goodcoverSrcDirectory}/core";
 
   # The path to this repository once it has been checked out.
   dotFilesRepo = fetchGit {
@@ -286,14 +284,14 @@ in
           };
         };
       };
-      includes = [
-        {
-          condition = "gitdir:${goodcoverSrcDirectory}";
-          contents = {
-            user.email = "jason@goodcover.com";
-          };
-        }
-      ];
+      #includes = [
+      #  {
+      #    condition = "gitdir:${goodcoverSrcDirectory}";
+      #    contents = {
+      #      user.email = "jason@goodcover.com";
+      #    };
+      #  }
+      #];
     };
 
     ssh = {

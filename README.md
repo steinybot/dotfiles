@@ -57,7 +57,6 @@ The recommended way to run this is via [bootstrap].
    ```
    access-tokens = github.com=<access_token>
    ```
-3. Add the [Goodcover settings] to `~/.config/nix/secrets.conf`.
 
 #### Run Home Manager
 
@@ -109,7 +108,6 @@ home-update-local
 ```
 
 [bootstrap]: https://github.com/steinybot/bootstrap
-[goodcover settings]: https://github.com/goodcover/gc-nix#add-settings-to-use-our-cache
 [home.nix]: home/.config/home-manager/home.nix
 [home manager]: https://github.com/nix-community/home-manager
 [personal access token (classic)]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic
