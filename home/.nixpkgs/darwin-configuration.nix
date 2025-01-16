@@ -36,7 +36,7 @@ in
       "act"
       "awscli"
       "bun"
-      "coursier"
+      "coursier/formulas/coursier"
       "coreutils"
       "exercism"
       "gh"
