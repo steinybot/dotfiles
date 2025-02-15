@@ -105,6 +105,7 @@ in
       "raycast"
       "roundpie"
       "slack"
+      "sony-ps-remote-play"
       "steam"
       "todoist"
       "universal-media-server"
