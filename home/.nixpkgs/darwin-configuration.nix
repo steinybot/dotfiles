@@ -96,6 +96,7 @@ in
       "keepassx"
       "lastpass"
       "miniforge"
+      "mitmproxy"
       "paintbrush"
       "parallels"
       "podman-desktop"
