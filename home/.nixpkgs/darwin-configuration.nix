@@ -93,7 +93,7 @@ in
       "iterm2"
       "jdk-mission-control"
       "keybase"
-      "keepassx"
+      "keepassxc"
       "lastpass"
       "miniforge"
       "mitmproxy"
