@@ -238,9 +238,7 @@ in
       userEmail = "jasonpickensnz@gmail.com";
       extraConfig = {
         branch = {
-          # This needs git 2.37
-          #autoSetupMerge = "simple";
-          autoSetupMerge = false;
+          autoSetupMerge = "simple";
         };
         core = {
           autocrlf = false;
