@@ -57,6 +57,7 @@ in
       "nodenv/nodenv/nodenv-default-packages"
       "node-build"
       "pandoc"
+      "podman"
       "pulumi"
       "pulumictl"
       "pyenv"
