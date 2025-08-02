@@ -139,6 +139,7 @@ in
       "${homeDirectory}/Library/Application Support/Coursier/bin"
       "${homeDirectory}/bin"
       "${homeDirectory}/.cargo/bin"
+      "/Applications/IntelliJ IDEA CE.app/Contents/MacOS"
     ];
 
     sessionVariables = {
