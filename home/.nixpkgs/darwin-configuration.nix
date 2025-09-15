@@ -111,6 +111,8 @@ in
       "slack"
       "sony-ps-remote-play"
       "steam"
+      "temurin@17"
+      "temurin@21"
       "todoist"
       "universal-media-server"
       "visual-studio-code"
