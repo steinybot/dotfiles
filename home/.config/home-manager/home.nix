@@ -202,6 +202,8 @@ in
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
+        eval "$(jenv init -)"
+
         eval "$(nodenv init -)"
 
         export PYENV_ROOT="$HOME/.pyenv"
@@ -341,6 +343,8 @@ in
       # These go in ~/.zprofile.
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
+
+        eval "$(jenv init -)"
 
         eval "$(nodenv init -)"
 
