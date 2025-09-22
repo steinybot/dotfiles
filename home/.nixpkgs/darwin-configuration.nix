@@ -70,6 +70,7 @@ in
       "Virtuslab/scala-cli/scala-cli"
       "watchman"
       "xml-coreutils"
+      "yt-dlp"
       "zabbix"
     ];
     casks = [
