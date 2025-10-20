@@ -39,6 +39,7 @@ in
       "coursier/formulas/coursier"
       "coreutils"
       "exercism"
+      "gemini-cli"
       "gh"
       "git"
       "go@1.21"
