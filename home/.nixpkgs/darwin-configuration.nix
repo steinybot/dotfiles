@@ -84,6 +84,7 @@ in
       # See https://docs.brew.sh/Tips-N'-Tricks#pre-download-a-file-for-a-formula
       "blender"
       "brave-browser"
+      "claude-code"
       "cursor"
       "discord"
       "disk-inventory-x"
