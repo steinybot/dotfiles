@@ -2,8 +2,7 @@
 
 My dotfiles.
 
-This is all managed via [Home Manager] and the [home.nix] configuration. `home.nix` will checkout this repository and
-link all the files to their correct places.
+This is all managed via **Nix Flakes**, **nix-darwin**, and **Home Manager**.
 
 ## Prerequisites
 
@@ -39,75 +38,59 @@ If that fails, try:
 open '/System/Library/CoreServices/Rosetta 2 Updater.app'
 ```
 
-## Setup
+### Nix
 
-You need to bootstrap `home-manager` so that it can do the rest. This only needs to be done once, after that see the
-[update](#update) instructions.
-
-### Automatic Setup
-
-The recommended way to run this is via [bootstrap].
-
-### Manual Setup
-
-#### GitHub Personal Access Token
-
-1. Create a GitHub [Personal Access Token (classic)] with the scope `repo`
-2. Add the token to `~/.config/nix/secrets.conf`:
-   ```
-   access-tokens = github.com=<access_token>
-   ```
-
-#### Run Home Manager
-
-Run `home-manager` with the `home.nix` configuration.
-
-For example:
+Install Nix (multi-user installation recommended):
 
 ```shell
-home_nix="$(mktemp -t home.nix)"
-curl -L -o "${home_nix}" 'https://raw.githubusercontent.com/steinybot/dotfiles/main/.config/home-manager/home.nix'
-home-manager -f "${home_nix}" switch
+sh <(curl -L https://nixos.org/nix/install)
 ```
+
+## Setup
+
+1. Clone this repository:
+   ```shell
+   mkdir -p ~/src
+   git clone https://github.com/steinybot/dotfiles.git ~/src/dotfiles
+   cd ~/src/dotfiles
+   ```
+
+2. Build and Apply the configuration:
+   ```shell
+   nix build --extra-experimental-features "nix-command flakes" .#darwinConfigurations.goodness.system
+   ./result/sw/bin/darwin-rebuild switch --flake .
+   ```
 
 ## Update
 
-To pull in updates from this repository run:
+To pull in updates from this repository and apply them:
 
 ```shell
-home-manager switch --option tarball-ttl 0
+cd ~/src/dotfiles
+git pull
+darwin-rebuild switch --flake .
 ```
 
-Or use the alias:
+### Aliases
 
-```shell
-home-update
-```
+- `home-update`: Rebuilds the system configuration from `~/src/dotfiles`.
 
-That will build and activate your current version of the configuration which may in turn update the configuration.
+This command runs: `darwin-rebuild switch --flake ~/src/dotfiles`
 
-If `home/.config` changes then `home-manager` will be rerun to activate the new configuration.
+> **Note**: You will see a "Git tree is dirty" warning if you have uncommitted changes. This is normal and serves as a helpful reminder.
 
 ## Troubleshooting
 
-### Bad Configuration
+### Build Failures
 
-The downside to having `home-manager` manage its own configuration is that if the configuration is invalid then it
-cannot update itself.
+If the build fails, check the logs. Common issues include deprecated options or failing package builds.
 
-To fix that you may need to run `bootstrap` again:
-
-```shell
-nix-bootstrap
-```
-
-Assuming that you have this repository checked out to `~/src/dotfiles`, you can make changes there and then run:
+You can inspect the build log by redirecting output:
 
 ```shell
-home-update-local
+nix build .#darwinConfigurations.goodness.system > build.log 2>&1
 ```
 
-[bootstrap]: https://github.com/steinybot/bootstrap
-[home.nix]: home/.config/home-manager/home.nix
-[home manager]: https://github.com/nix-community/home-manager
-[personal access token (classic)]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic
+### Bootstrap
+
+If you need to bootstrap from scratch, you can use the `nix-bootstrap` alias or run the bootstrap script manually (see `bootstrap.sh` in the repo history or `steinybot/bootstrap` repo).

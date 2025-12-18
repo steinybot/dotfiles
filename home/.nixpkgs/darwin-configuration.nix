@@ -51,6 +51,7 @@ in
       "jackett"
       "jenv"
       "jq"
+
       "mill"
       "mpv"
       "node"
@@ -75,7 +76,8 @@ in
       "zabbix"
     ];
     casks = [
-      "aws-vault"
+      "antigravity"
+      "aws-vault-binary"
       "beyond-compare"
       # This often times out trying to download.
       # You might need to download it manually and run:
@@ -88,7 +90,7 @@ in
       "cursor"
       "discord"
       "disk-inventory-x"
-      "dotnet-sdk"
+
       "epic-games"
       "firefox"
       "freecad"
@@ -116,7 +118,7 @@ in
       "steam"
       "temurin@17"
       "temurin@21"
-      "todoist"
+      "todoist-app"
       "universal-media-server"
       "visual-studio-code"
       "visualvm"
@@ -125,7 +127,7 @@ in
       "webstorm"
       "whatsapp"
       "whisky"
-      "wireshark"
+      "wireshark-app"
       "zed"
       "zoom"
     ];
@@ -143,6 +145,7 @@ in
       "nodenv/nodenv"
       "oven-sh/bun"
       "pulumi/tap"
+
       "virtuslab/scala-cli"
     ];
   };
@@ -164,15 +167,7 @@ in
       keep-derivations = true
     '';
 
-    nixPath = [
-      {
-        darwin-config = "\${HOME}/.nixpkgs/darwin-configuration.nix";
-        nixpkgs = "/nix/var/nix/profiles/per-user/root/channels/nixpkgs";
-      }
-      "/nix/var/nix/profiles/per-user/root/channels"
-      # FIXME: This ends up being there twice.
-      "\${HOME}/.nix-defexpr/channels"
-    ];
+
 
     package = pkgs.nix;
   };
@@ -192,12 +187,11 @@ in
     };
   };
 
-  services = {
-    # Auto upgrade nix package and the daemon service.
-    nix-daemon.enable = true;
-  };
+
 
   system = {
+    primaryUser = "jason";
+
     activationScripts = {
       #postActivation.text = ''
       #  grep -q '\slocal\.goodcover\.com' /etc/hosts || cat << 'EOF' >> /etc/hosts
@@ -252,7 +246,8 @@ in
     createHome = true;
     description = "Jason Pickens";
     home = "/Users/jason";
-    name = "Jason Pickens";
+    name = "jason";
     shell = pkgs.zsh;
   };
+
 }

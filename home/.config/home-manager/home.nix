@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   username = "jason";
@@ -10,10 +10,7 @@ let
   dotfilesSrcDirectory = "${srcDirectory}/dotfiles";
 
   # The path to this repository once it has been checked out.
-  dotFilesRepo = fetchGit {
-    url = "https://github.com/steinybot/dotfiles.git";
-    ref = "main";
-  };
+  dotFilesRepo = inputs.self;
   # Use this if git/ssh is broken (such as when the PGP key expires).
   #dotFilesRepo = ../../..;
   repoHomeFilesDirectory = "${dotFilesRepo}/home";
@@ -23,13 +20,13 @@ let
     # This may update itself so we might need to run again.
     ".config/home-manager/home.nix" = {
       source = "${repoHomeFilesDirectory}/.config/home-manager/home.nix";
-      onChange = "home-manager --option tarball-ttl 0 -b backup switch";
+
     };
 
     # Run rebuild when the configuration changes.
     ".nixpkgs/darwin-configuration.nix" = {
       source = "${repoHomeFilesDirectory}/.nixpkgs/darwin-configuration.nix";
-      onChange = "darwin-rebuild switch";
+
     };
 
     # Update the channels when they change.
@@ -71,39 +68,14 @@ let
 
   # Prefer using pkgsCross but some packages do not cross build so we have to build the whole thing for x86_64.
   # TODO: Where should <nixpkgs> come from?
-  intelPkgs = import <nixpkgs> {
-    system = "x86_64-darwin";
-  };
-
-  unstablePkgsRepo = fetchGit {
-    url = "https://github.com/nixos/nixpkgs.git";
-    ref = "nixpkgs-unstable";
-  };
-  unstablePkgs = import unstablePkgsRepo {
-    overlays = [
-        (self: super: {
-          bcompare = super.bcompare.overrideAttrs (old: {
-            postInstall =
-              ''
-                ${(old.postInstall or "")}
-
-                ln $out/Applications/BCompare.app/Contents/MacOS/bcomp bin/bcomp
-              '';
-          });
-        })
-      ];
-  };
-
-#  customPkgsRepo = fetchGit {
-#    url = "https://github.com/steinybot/nixpkgs.git";
-#    ref = "dev";
-#  };
-#  customPkgs = import customPkgsRepo {};
+  # intelPkgs = import <nixpkgs> {
+  #   system = "x86_64-darwin";
+  # };
 
   shellAliases = {
     nix-bootstrap = "sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)";
-    home-update = "home-manager --option tarball-ttl 0 switch";
-    home-update-local = "home-manager -f '${dotfilesSrcDirectory}/home/.config/home-manager/home.nix' --option tarball-ttl 0 switch";
+    home-update = "darwin-rebuild switch --flake ${dotfilesSrcDirectory}";
+
     rm = "safe-rm";
   };
 in
@@ -122,13 +94,13 @@ in
       ammonite
       element-desktop
       gnupg
-      graalvm-ce
+      graalvmPackages.graalvm-ce
       jq
       maven
       pinentry_mac
       ripgrep
       surfraw # This needs a browser such as w3m.
-      thefuck
+      pay-respects
       w3m
       yarn
     ];
@@ -168,20 +140,15 @@ in
   launchd.agents = {
   };
 
-  nixpkgs.overlays = [
-    (self: super: {
-      bcompare = super.bcompare.overrideAttrs (old: {
-        postInstall =
-          ''
-            ${(old.postInstall or "")}
-
-            ln $out/Applications/BCompare.app/Contents/MacOS/bcomp bin/bcomp
-          '';
-      });
-    })
-  ];
+  #nixpkgs.overlays = [
+  #  # Overlays are now managed in flake.nix
+  #];
 
   programs = {
+    delta = {
+      enable = true;
+    };
+
     bash = {
       enable = true;
       # These go in ~/.bashrc.
@@ -229,16 +196,22 @@ in
     # if XCode is not installed.
     git = {
       enable = true;
-      delta = {
-        enable = true;
-      };
-      signing = {
-        key = "C4A8C75C7876F1B5";
-        signByDefault = true;
-      };
-      userName = "Jason Pickens";
-      userEmail = "jasonpickensnz@gmail.com";
-      extraConfig = {
+
+      #signing = {
+      #  key = "C4A8C75C7876F1B5";
+      #  signByDefault = true;
+      #};
+      #userName = "Jason Pickens";
+      #userEmail = "jasonpickensnz@gmail.com";
+      settings = {
+        user = {
+          name = "Jason Pickens";
+          email = "jasonpickensnz@gmail.com";
+          signingKey = "C4A8C75C7876F1B5";
+        };
+        commit = {
+          gpgSign = true;
+        };
         branch = {
           autoSetupMerge = "simple";
         };
@@ -296,18 +269,22 @@ in
 
     ssh = {
       enable = true;
-      extraOptionOverrides = {
-        IgnoreUnknown = "UseKeychain";
+      enableDefaultConfig = false;
+
+      matchBlocks."*" = {
+        extraOptions = {
+          IgnoreUnknown = "UseKeychain";
+          UseKeychain = "yes";
+        };
         # This will start the gpg agent when using SSH.
-        Match = "host * exec \"gpg-connect-agent UPDATESTARTUPTTY /bye\"";
-        UseKeychain = "yes";
+        match = "host * exec \"gpg-connect-agent UPDATESTARTUPTTY /bye\"";
       };
     };
 
     zsh = {
       enable = true;
       # These go in ~/.zshrc.
-      initExtra = ''
+      initContent = ''
         source ~/.config/iterm2/.iterm2_shell_integration.zsh
 
         # >>> conda initialize >>>
@@ -337,7 +314,7 @@ in
       '';
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "thefuck" "vi-mode" ];
+        plugins = [ "git" "vi-mode" ];
         theme = "dst";
       };
       # These go in ~/.zprofile.
