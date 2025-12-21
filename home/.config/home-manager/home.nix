@@ -285,7 +285,8 @@ in
       enable = true;
       # These go in ~/.zshrc.
       initContent = ''
-        source ~/.config/iterm2/.iterm2_shell_integration.zsh
+        # This causes AI agents to return exit code 130 for no apparent reason.
+        # source ~/.config/iterm2/.iterm2_shell_integration.zsh
 
         # >>> conda initialize >>>
         # !! Contents within this block are managed by 'conda init' !!
